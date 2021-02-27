@@ -44,15 +44,26 @@ include 'chat.inc.php';
     	</div>
     </nav>
 <?php
+
+
 echo "<form method='POST' action='".setComments($conn)."'>
 <div class='form-group'>
 <input type = 'hidden' name='uid' value = 'anonymous'></input>
 <input type = 'hidden' name='date' value = '".date('Y-m-d H:i:s')."'></input>
 <h4 class='text-left'>Question/feedback:<h4>
-<textarea class = 'form-control col-sm-12 col-lg-9' name = 'message' rows= '3'> </textarea><br>
+<textarea class = 'form-control col-xs-9 col-sm-9' name = 'message' rows= '3'> </textarea><br>
 <button type = 'submit' class='btn btn-primary btn-lg' name = 'commentSubmit' >Submit</button>
 </div>
-
+ <div class='dropdown'>
+  <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+    Sort By
+  </button>
+  <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+    <button class='dropdown-item' type='button'>Votes: High to Low</button>
+    <button class='dropdown-item' type='button'>Date: Earliest to Latest</button>
+    <button class='dropdown-item' type='button'>Date: Latest to Earliest</button>
+  </div>
+</div>;
 </form>";
 
 getComments($conn);
