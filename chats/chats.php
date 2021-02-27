@@ -33,17 +33,11 @@ include 'chat.inc.php';
     		 <a class="nav-link" href="../index.html">Home</a>
     	 </li>
     	 <li class="nav-item">
-    		 <a class="nav-link" href="chats.php">Get started</a>
+    		 <a class="nav-link" href="#">Demo</a>
     	 </li>
-    	 <li class="nav-item">
-    		 <a class="nav-link" href="#">About</a>
-    	 </li>
-    	 <li class="nav-item">
-    		 <a class="nav-link" href="#">Team</a>
-    	 </li>
-    	 <li class="nav-item">
-    		 <a class="nav-link" href="#">Connect</a>
-    	 </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#">Terms & Conditions</a>
+      </li>
      </ul>
     </div>
 
@@ -93,15 +87,5 @@ getComments($conn);
 </div>
 
 </footer>
-
-
-
-
-
-
   </body>
-
-
-
-
 </html>
