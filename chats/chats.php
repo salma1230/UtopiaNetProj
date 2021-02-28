@@ -46,6 +46,7 @@ include 'chat.inc.php';
 <?php
 
 
+
 echo "<form method='POST' action='".setComments($conn)."'>
 <div class='form-group'>
 <input type = 'hidden' name='uid' value = 'anonymous'></input>
@@ -54,19 +55,22 @@ echo "<form method='POST' action='".setComments($conn)."'>
 <textarea class = 'form-control col-xs-9 col-sm-9' name = 'message' rows= '3'> </textarea><br>
 <button type = 'submit' class='btn btn-primary btn-lg' name = 'commentSubmit' >Submit</button>
 </div>
- <div class='dropdown'>
-  <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-    Sort By
-  </button>
-  <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
-    <button class='dropdown-item' type='button'>Votes: High to Low</button>
-    <button class='dropdown-item' type='button'>Date: Earliest to Latest</button>
-    <button class='dropdown-item' type='button'>Date: Latest to Earliest</button>
-  </div>
-</div>;
+<div class='dropdown'>
+ <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+   Sort By
+ </button>
 </form>";
 
-getComments($conn);
+echo "<form method='POST' action='".getComments($conn)."'>
+  <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+    <button class='dropdown-item' type='submit' name='vote'>Votes: High to Low</button>
+    <button class='dropdown-item' type='submit' name ='dateEarliest'>Date: Earliest to Latest</button>
+    <button class='dropdown-item' type='submit' name='dateLatest'>Date: Latest to Earliest</button>
+  </div>
+</div>
+</form>";
+
+
 
 ?>
 

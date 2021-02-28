@@ -2,6 +2,7 @@
 date_default_timezone_set('Europe/London');
 include 'dbh.inc.php';
 include 'chat.inc.php';
+include 'login.inc.php';
  ?>
 
  <!DOCTYPE html>
@@ -61,29 +62,31 @@ include 'chat.inc.php';
 
   			</div>
   			<div class="card-body">
-  				<form>
-  					<div class="input-group form-group">
-  						<div class="input-group-prepend">
-  							<span class="input-group-text"><i class="fas fa-user"></i></span>
+          <?php
+  	echo"	<form method='POST' action= '".reg($conn)."'>
+  					<div class='input-group form-group'>
+  						<div class='input-group-prepend'>
+  							<span class='input-group-text'><i class='fas fa-user'></i></span>
   						</div>
-  						<input type="text" class="form-control" placeholder="username">
+  						<input type='text' class='form-control' name='username' placeholder='username'>
   					</div>
 
-  					<div class="input-group form-group">
-  						<div class="input-group-prepend">
-  							<span class="input-group-text"><i class="fas fa-key"></i></span>
+  					<div class='input-group form-group'>
+  						<div class='input-group-prepend'>
+  							<span class='input-group-text'><i class='fas fa-key'></i></span>
   						</div>
-            	<input type="password" class="form-control" placeholder="password">
+            	<input type='password' name ='password'class='form-control' placeholder='password'>
   					</div>
 
-          	<div class="row align-items-center remember">
-  						<input type="checkbox">Remember Me
+          	<div class='row align-items-center remember'>
+  						<input type='checkbox'>Remember Me
   					</div>
 
-          	<div class="form-group">
-  						<input type="submit" value="Login" class="btn float-right login_btn">
+          	<div class='form-group'>
+  						<input type='submit' value='Login' name='loginSubmit' class='btn float-right login_btn'>
   					</div>
-  				</form>
+  				</form>";
+          ?>
   			</div>
       </div>
 	</div>

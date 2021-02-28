@@ -1,14 +1,16 @@
 <?php
+
 function setComments($conn){
   if(isset($_POST['commentSubmit'])){
 $message_title = "Question/feedback:";
 $uid = $_POST['uid'];
 $date = $_POST['date'];
 $message = $_POST['message'];
+$votes = 0;
 $message_with_title = $message_title . ' '. $message;
 
-$sql = "INSERT INTO chat (uid, date, message)
- VALUES ('$uid', '$date', '$message_with_title')";
+$sql = "INSERT INTO chat (uid, date, message, votes)
+ VALUES ('$uid', '$date', '$message_with_title', '$votes')";
 
 $result = $conn->query($sql);
   }
@@ -31,14 +33,33 @@ $page = $_GET['page'];
 
 $start_limit = ($page-1)*$limit;
 
-$sql = "SELECT * FROM chat LIMIT " . $start_limit . ',' . $limit;
-$result = $conn->query($sql);
+if(isset($_POST['dateEarliest'])){
+    $sql = "SELECT * FROM chat ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
+    $result = $conn->query($sql);
+  }
+  elseif(isset($_POST['dateLatest'])){
+      $sql = "SELECT * FROM chat ORDER BY date ASC LIMIT " . $start_limit . ',' . $limit;
+      $result = $conn->query($sql);
+    }
+  elseif(isset($_POST['vote'])){
+        $sql = "SELECT * FROM chat ORDER BY votes DESC LIMIT " . $start_limit . ',' . $limit;
+        $result = $conn->query($sql);
+      }
+  else{
+    $sql = "SELECT * FROM chat ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
+    $result = $conn->query($sql);
+  }
+
 
 while ($row = $result->fetch_assoc()){
   echo" <div class = 'container mt-2 col-sm-12 col-lg-9 bg-light' tabindex='0'>";
 echo $row['date']."<br>";
 echo nl2br($row['message']);
   echo"</p>
+  <form class ='upvote-form' method= 'POST' action='".upvote($conn)."'>
+  <input type = 'hidden' name='cid' value = '".$row['cid']."'>
+  <button type = 'submit' name = 'upvote'>Upvote</button>
+  </form>
   <form class='delete-form' method='POST' action='".deleteComments($conn)."'>
   <input type = 'hidden' name='cid' value = '".$row['cid']."'>
   <button type = 'submit' name = 'commentDelete'>Delete</button>
@@ -92,4 +113,14 @@ $sql = "UPDATE chat SET message=CONCAT(message, '$message1') WHERE cid ='$cid'";
 $result = $conn->query($sql);
 header("Location: chats.php");
   }
+}
+
+
+function upvote($conn){
+
+  if(isset($_POST['upvote'])){
+  $cid = $_POST['cid'];
+   $sql = "UPDATE chat SET votes = votes+1  WHERE cid='$cid' ";
+  $result = $conn->query($sql);
+}
 }
