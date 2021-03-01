@@ -3,6 +3,7 @@ date_default_timezone_set('Europe/London');
 include 'dbh.inc.php';
 include 'chat.inc.php';
 include 'login.inc.php';
+session_start();
  ?>
 
  <!DOCTYPE html>
@@ -63,7 +64,7 @@ include 'login.inc.php';
   			</div>
   			<div class="card-body">
           <?php
-  	echo"	<form method='POST' action= '".reg($conn)."'>
+  	echo"	<form method='POST' action= '".getLogin($conn)."'>
   					<div class='input-group form-group'>
   						<div class='input-group-prepend'>
   							<span class='input-group-text'><i class='fas fa-user'></i></span>

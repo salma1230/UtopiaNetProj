@@ -1,7 +1,10 @@
 <?php
+
 date_default_timezone_set('Europe/London');
 include 'dbh.inc.php';
 include 'chat.inc.php';
+include 'login.inc.php';
+session_start();
  ?>
 
 <!DOCTYPE html>
@@ -38,6 +41,13 @@ include 'chat.inc.php';
        <li class="nav-item">
         <a class="nav-link" href="#">Terms & Conditions</a>
       </li>
+      <?php
+echo"<form method= 'POST' action= '".userLogout()."'><li class='nav-item'>
+ <a class='nav-link' href='#' type='submit' name='logout submit'>Log Out</a>
+</li>
+</form>"
+;
+       ?>
      </ul>
     </div>
 

@@ -20,4 +20,4 @@ CREATE TABLE users (
 
 --Admin Credentials--
 --username:'admin'
---password:'123'
+--password:'admin_pwd123'
