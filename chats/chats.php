@@ -1,7 +1,10 @@
 <?php
+
 date_default_timezone_set('Europe/London');
 include 'dbh.inc.php';
 include 'chat.inc.php';
+include 'login.inc.php';
+session_start();
  ?>
 
 <!DOCTYPE html>
@@ -33,35 +36,51 @@ include 'chat.inc.php';
     		 <a class="nav-link" href="../index.html">Home</a>
     	 </li>
     	 <li class="nav-item">
-    		 <a class="nav-link" href="chats.php">Get started</a>
+    		 <a class="nav-link" href="#">Demo</a>
     	 </li>
-    	 <li class="nav-item">
-    		 <a class="nav-link" href="#">About</a>
-    	 </li>
-    	 <li class="nav-item">
-    		 <a class="nav-link" href="#">Team</a>
-    	 </li>
-    	 <li class="nav-item">
-    		 <a class="nav-link" href="#">Connect</a>
-    	 </li>
+       <li class="nav-item">
+        <a class="nav-link" href="#">Terms & Conditions</a>
+      </li>
+      <?php
+echo"<form method= 'POST' action= '".userLogout()."'><li class='nav-item'>
+ <a class='nav-link' href='#' type='submit' name='logout submit'>Log Out</a>
+</li>
+</form>"
+;
+       ?>
      </ul>
     </div>
 
     	</div>
     </nav>
 <?php
+
+
+
 echo "<form method='POST' action='".setComments($conn)."'>
 <div class='form-group'>
 <input type = 'hidden' name='uid' value = 'anonymous'></input>
 <input type = 'hidden' name='date' value = '".date('Y-m-d H:i:s')."'></input>
 <h4 class='text-left'>Question/feedback:<h4>
-<textarea class = 'form-control col-sm-12 col-lg-9' name = 'message' rows= '3'> </textarea><br>
+<textarea class = 'form-control col-xs-9 col-sm-9' name = 'message' rows= '3'> </textarea><br>
 <button type = 'submit' class='btn btn-primary btn-lg' name = 'commentSubmit' >Submit</button>
 </div>
-
+<div class='dropdown'>
+ <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+   Sort By
+ </button>
 </form>";
 
-getComments($conn);
+echo "<form method='POST' action='".getComments($conn)."'>
+  <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
+    <button class='dropdown-item' type='submit' name='vote'>Votes: High to Low</button>
+    <button class='dropdown-item' type='submit' name ='dateEarliest'>Date: Earliest to Latest</button>
+    <button class='dropdown-item' type='submit' name='dateLatest'>Date: Latest to Earliest</button>
+  </div>
+</div>
+</form>";
+
+
 
 ?>
 
@@ -93,15 +112,5 @@ getComments($conn);
 </div>
 
 </footer>
-
-
-
-
-
-
   </body>
-
-
-
-
 </html>
