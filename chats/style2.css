@@ -20,7 +20,10 @@ padding-right:20px;
   font-size: 1.1em !important
 }
 
-
+button.btn.btn-light.chat{
+margin-bottom: 0px;
+margin-left: 0px;
+}
 
 textarea.form-group{
   resize:none;
