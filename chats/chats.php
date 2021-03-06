@@ -1,5 +1,4 @@
 <?php
-
 date_default_timezone_set('Europe/London');
 include 'dbh.inc.php';
 include 'chat.inc.php';
@@ -33,7 +32,7 @@ session_start();
     <div class="collapse navbar-collapse" id="navbarResponsive">
      <ul class="navbar-nav ml-auto">
     	 <li class="nav-item">
-    		 <a class="nav-link" href="../index.html">Home</a>
+    		 <a class="nav-link" href="../index.php">Home</a>
     	 </li>
     	 <li class="nav-item">
     		 <a class="nav-link" href="#">Demo</a>
@@ -42,12 +41,13 @@ session_start();
         <a class="nav-link" href="#">Terms & Conditions</a>
       </li>
       <?php
-echo"<form method= 'POST' action= '".userLogout()."'><li class='nav-item'>
- <a class='nav-link' href='#' type='submit' name='logout submit'>Log Out</a>
-</li>
-</form>"
-;
-       ?>
+if(isset($_SESSION['id'])){
+echo"<form method= 'POST' action= '".userLogout()."'>
+   <button  class='btn btn-light chat' type='submit' name='logoutSubmit'>Log Out</button>
+  </form>";
+}else{
+}
+        ?>
      </ul>
     </div>
 

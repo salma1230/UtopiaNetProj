@@ -1,3 +1,11 @@
+<?php
+date_default_timezone_set('Europe/London');
+include 'chats/dbh.inc.php';
+include 'chats/chat.inc.php';
+include 'chats/login.inc.php';
+session_start();
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +49,15 @@
 	 <li class="nav-item">
 		 <a class="nav-link" href="#Philosophy">Philosophy</a>
 	 </li>
+   <?php
+
+ if(isset($_SESSION['id'])){
+ echo"<form method= 'POST' action= '".userLogout()."'>
+ <button  class='btn btn-light' type='submit' name='logoutSubmit'>Log Out</button>
+ </form>";
+ }else{
+ }
+     ?>
  </ul>
 </div>
 
@@ -59,8 +76,8 @@
 	 <div class="carousel-caption">
 		 <h1 class="display-2">UtopiaNet</h1>
 		 <h3>Helping students help each other</h3>
-		 <button type="button" class="btn btn-outline-light btn-lg" onclick="location.href='chats/teacherLogin.php'">Teacher</button>
-		 <button type="button" class="btn btn-primary btn-lg"  onclick="location.href='chats/chats.php'">Student</button>
+		 <button type="button" class="btn btn-outline-light btn-lg" onclick="location.href='chats/teacherLogin.php'">Teacher Login</button>
+		 <button type="button" class="btn btn-primary btn-lg"  onclick="location.href='chats/chats.php'">Chat Page</button>
 	 </div>
  </div>
 </div>
