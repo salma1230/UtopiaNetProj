@@ -3,6 +3,8 @@ date_default_timezone_set('Europe/London');
 include 'dbh.inc.php';
 include 'chat.inc.php';
 include 'login.inc.php';
+//server keeps the session data for 3 hours
+ini_set('session.gc_maxlifetime', 10800);
 session_start();
  ?>
 
