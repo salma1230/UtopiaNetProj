@@ -42,6 +42,9 @@ session_start();
        <li class="nav-item">
         <a class="nav-link" href="#">Terms & Conditions</a>
       </li>
+      <li class="nav-item">
+       <a class="nav-link" href="archive.php">Archives</a>
+     </li>
       <?php
 if(isset($_SESSION['id'])){
 echo"<form method= 'POST' action= '".userLogout()."'>
@@ -55,10 +58,8 @@ echo"<form method= 'POST' action= '".userLogout()."'>
 
     	</div>
     </nav>
+
 <?php
-
-
-
 echo "<form method='POST' action='".setComments($conn)."'>
 <div class='form-group'>
 <input type = 'hidden' name='uid' value = 'anonymous'></input>
@@ -81,9 +82,6 @@ echo "<form method='POST' action='".getComments($conn)."'>
   </div>
 </div>
 </form>";
-
-
-
 ?>
 
 

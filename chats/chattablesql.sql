@@ -21,3 +21,12 @@ CREATE TABLE users (
 --Admin Credentials--
 --username:'admin'
 --password:'admin_pwd123'
+
+--Table Structure for tabloe'archives'
+CREATE TABLE archive (
+  cid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  uid VARCHAR(128) NOT NULL,
+  date datetime NOT NULL,
+  message TEXT NOT NULL,
+  votes int(11) NOT NULL
+);
