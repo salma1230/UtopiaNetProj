@@ -23,7 +23,7 @@ session_start();
 
 
 <!-- Navigation -->
-<?php include('header.php') ?>
+<?php include('chats/header.php') ?>
 
 
 <!--- Image Slider -->
@@ -203,7 +203,7 @@ session_start();
 
 
 <!--- Footer -->
-<?php include('footer.php'); ?>
+<?php include('chats/footer.php'); ?>
 
 
 
