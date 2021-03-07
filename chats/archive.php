@@ -60,20 +60,24 @@ session_start();
      </nav>
 
 
-<div class="container"> <br>
+ <br>
   <h4>Archive Page</h4><br>
+
+
      <?php
+     echo"<div class='dropdown'>
+      <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+        Sort By
+      </button>
+     </form>";
      echo "<form method='POST' action='".getArchives($conn)."'>
        <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
          <button class='dropdown-item' type='submit' name='vote'>Votes: High to Low</button>
          <button class='dropdown-item' type='submit' name ='dateEarliest'>Date: Earliest to Latest</button>
          <button class='dropdown-item' type='submit' name='dateLatest'>Date: Latest to Earliest</button>
        </div>
-     </div>
      </form>";
-
      ?>
-</div>
 
      <!--- Footer -->
      <footer>
