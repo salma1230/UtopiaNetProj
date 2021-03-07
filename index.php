@@ -14,57 +14,17 @@ session_start();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>UtopiaNet</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+	<?php include('chats/scripts.php') ?>
 	<link href="style.css" rel="stylesheet">
-
 </head>
+
 <body>
 
+
+
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-	<div class = "container-fluid">
-		<a class="navbar-brand" href="#"><img src="img/logo2.png"></a>
+<?php include('header.php') ?>
 
-<button class = "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="navbarResponsive">
- <ul class="navbar-nav ml-auto">
-	 <li class="nav-item">
-		 <a class="nav-link" href="index.html">Home</a>
-	 </li>
-	 <li class="nav-item">
-		 <a class="nav-link" href="#welcome">Get started</a>
-	 </li>
-	 <li class="nav-item">
-		 <a class="nav-link" href="#about">About</a>
-	 </li>
-	 <li class="nav-item">
-		 <a class="nav-link" href="#team">Team</a>
-	 </li>
-	 <li class="nav-item">
-		 <a class="nav-link" href="#Philosophy">Philosophy</a>
-	 </li>
-   <?php
-
- if(isset($_SESSION['id'])){
- echo"<form method= 'POST' action= '".userLogout()."'>
- <button  class='btn btn-light' type='submit' name='logoutSubmit'>Log Out</button>
- </form>";
- }else{
- }
-     ?>
- </ul>
-</div>
-
-	</div>
-</nav>
 
 <!--- Image Slider -->
 <div id="slides" class ="carousel slide" data-ride="carousel">
@@ -114,7 +74,7 @@ session_start();
 </div>
 
 <!--- Three Column Section -->
-<section id = "about">
+<section id = "demo">
 <div class="container-fluid padding">
 	<div class="row text-center padding">
 		<div class="col-xs-12 col-sm-6 col-md-4">
@@ -160,38 +120,6 @@ session_start();
 
 
 <hr class="my-4">
-<!---Fixed background -
-<figure>
-<div class="fixed-wrap">
-	<div id="fixed">
-	</div>
-</div>
-</figure>
--->
-<!--- Emoji Section
-<button class="fun" data-toggle="collapse"
- data-target="#emoji">Click for fun
-</button>
-<div id="emoji" class="collapse">
-	<div class="container-fluid padding">
-		<div class="row text-center">
-			<div class="col-sm-6 col-md-3">
-				<img class="gif" src="img/gif/panda.gif">
-</div>
-<div class="col-sm-6 col-md-3">
-	<img class="gif" src="img/gif/poo.gif">
-</div>
-<div class="col-sm-6 col-md-3">
-	<img class="gif" src="img/gif/unicorn.gif">
-</div>
-<div class="col-sm-6 col-md-3">
-	<img class="gif" src="img/gif/chicken.gif">
-</div>
-		</div>
-	</div>
-</div>
--->
-
 <!--- Meet the team -->
 <div class="container-fluidf padding" id="team">
 	<div class="row welcome text-center">
@@ -275,32 +203,9 @@ session_start();
 
 
 <!--- Footer -->
-<footer>
-<div class="container-fluid padding">
-	<div class="row text-center">
-		<div class="col-md-6">
-			<img src="img/w3newbie.png">
-			<hr class="light">
-			<p>Phone number here</p>
-			<p>Email address</P>
-			<p>Street Address</P>
-			<p>Post code</P>
-		</div>
-		<div class="col-md-6">
-		<hr class="light">
-		<h5>Our hours</h5>
-		<hr class="light">
-		<p>Monday: 9am-5pm</p>
-		<p>Saturday: 10am-4pm</p>
-		<p>Sunday: closed</p>
-	</div>
-<div class="col-12">
-	<hr class="light-100">
-	<h5>&copy; UtopiaNet.com</h5>
-</div>
-</div>
+<?php include('footer.php'); ?>
 
-</footer>
+
 
 <script>
 	var scroll = new SmoothScroll('a[href*="#"]');
