@@ -107,14 +107,12 @@ echo '
 }
 
 function getArchives($conn){
-
     $limit = 7;
 
     $page_query = "SELECT * FROM archives";
     $page_result = $conn->query($page_query);
     $number_of_results = mysqli_num_rows($page_result);
     $number_of_pages = ceil($number_of_results/$limit);
-
 
     if(!isset($_GET['page'])){
     $page = 1;
@@ -143,7 +141,7 @@ function getArchives($conn){
 
 
     while ($row = $result->fetch_assoc()){
-      echo" <div class = 'container mt-2 col-sm-12 bg-light' tabindex='0'>";
+      echo" <div class = 'container mt-2 col-lg-9 bg-light' tabindex='0'>";
     echo $row['date']."<br>";
     echo nl2br($row['message']);
     if(isset($_SESSION['id'])){
