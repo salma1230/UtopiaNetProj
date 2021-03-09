@@ -5,7 +5,10 @@ CREATE TABLE chat (
   uid VARCHAR(128) NOT NULL,
   date datetime NOT NULL,
   message TEXT NOT NULL,
-  votes int(11) NOT NULL
+  votes int(11) NOT NULL,
+  roomID VARCHAR(255) NOT NULL,
+  CONSTRAINT fk_l_id FOREIGN KEY (roomID) REFERENCES users(roomID)
+
 );
 
 
@@ -14,7 +17,8 @@ CREATE TABLE chat (
 CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    roomID VARCHAR(255) NOT NULL
 );
 
 
@@ -28,5 +32,7 @@ CREATE TABLE archive (
   uid VARCHAR(128) NOT NULL,
   date datetime NOT NULL,
   message TEXT NOT NULL,
-  votes int(11) NOT NULL
+  votes int(11) NOT NULL,
+  roomID VARCHAR(255) NOT NULL,
+  CONSTRAINT fk_2_id FOREIGN KEY (roomID) REFERENCES users(roomID)
 );

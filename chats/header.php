@@ -26,7 +26,7 @@ echo "<nav class='navbar navbar-expand-md navbar-light bg-light fixed-top'>
 		 <a class='nav-link' href='#Philosophy'>Philosophy</a>
 	 </li>
    <li class='nav-item'>
-    <a class='nav-link' href='chats/chats.php'>Chat Page</a>
+    <a class='nav-link' href='chats/roomID.php'>Chat Page</a>
   </li>
   <li class='nav-item'>
    <a class='nav-link' href='chats/teacherLogin.php'>Teacher Login</a>

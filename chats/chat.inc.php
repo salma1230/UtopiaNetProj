@@ -2,24 +2,26 @@
 
 function setComments($conn){
   if(isset($_POST['commentSubmit'])){
+$room = $_SESSION['roomID'];
 $message_title = "Question/feedback:";
 $uid = $_POST['uid'];
 $date = $_POST['date'];
 $message = $_POST['message'];
 $votes = 0;
 $message_with_title = $message_title . ' '. $message;
-
-$sql = "INSERT INTO chat (uid, date, message, votes)
- VALUES ('$uid', '$date', '$message_with_title', '$votes')";
+$sql = "INSERT INTO chat (uid, date, message, votes, roomID)
+ VALUES ('$uid', '$date', '$message_with_title', '$votes', '$room')";
 
 $result = $conn->query($sql);
   }
 }
 
 function getComments($conn){
+$room = $_SESSION['roomID'];
+
 $limit = 7;
 
-$page_query = "SELECT * FROM chat";
+$page_query = "SELECT * FROM chat WHERE roomID = '$room'";
 $page_result = $conn->query($page_query);
 $number_of_results = mysqli_num_rows($page_result);
 $number_of_pages = ceil($number_of_results/$limit);
@@ -33,20 +35,22 @@ $page = $_GET['page'];
 
 $start_limit = ($page-1)*$limit;
 
+
+
 if(isset($_POST['dateEarliest'])){
-    $sql = "SELECT * FROM chat ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
+    $sql = "SELECT * FROM chat WHERE roomID = '$room' ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
     $result = $conn->query($sql);
   }
   elseif(isset($_POST['dateLatest'])){
-      $sql = "SELECT * FROM chat ORDER BY date ASC LIMIT " . $start_limit . ',' . $limit;
+      $sql = "SELECT * FROM chat WHERE roomID = '$room' ORDER BY date ASC LIMIT " . $start_limit . ',' . $limit;
       $result = $conn->query($sql);
     }
   elseif(isset($_POST['vote'])){
-        $sql = "SELECT * FROM chat ORDER BY votes DESC LIMIT " . $start_limit . ',' . $limit;
+        $sql = "SELECT * FROM chat WHERE roomID = '$room' ORDER BY votes DESC LIMIT " . $start_limit . ',' . $limit;
         $result = $conn->query($sql);
       }
   else{
-    $sql = "SELECT * FROM chat ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
+    $sql = "SELECT * FROM chat WHERE roomID = '$room' ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
     $result = $conn->query($sql);
   }
 
@@ -108,8 +112,8 @@ echo '
 
 function getArchives($conn){
     $limit = 7;
-
-    $page_query = "SELECT * FROM archives";
+    $room = $_SESSION['roomID'];
+    $page_query = "SELECT * FROM archives WHERE roomID = '$room'";
     $page_result = $conn->query($page_query);
     $number_of_results = mysqli_num_rows($page_result);
     $number_of_pages = ceil($number_of_results/$limit);
@@ -123,19 +127,19 @@ function getArchives($conn){
     $start_limit = ($page-1)*$limit;
 
     if(isset($_POST['dateEarliest'])){
-        $sql = "SELECT * FROM archives ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
+        $sql = "SELECT * FROM archives WHERE roomID = '$room' ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
         $result = $conn->query($sql);
       }
       elseif(isset($_POST['dateLatest'])){
-          $sql = "SELECT * FROM archives ORDER BY date ASC LIMIT " . $start_limit . ',' . $limit;
+          $sql = "SELECT * FROM archives WHERE roomID = '$room' ORDER BY date ASC LIMIT " . $start_limit . ',' . $limit;
           $result = $conn->query($sql);
         }
       elseif(isset($_POST['vote'])){
-            $sql = "SELECT * FROM archives ORDER BY votes DESC LIMIT " . $start_limit . ',' . $limit;
+            $sql = "SELECT * FROM archives WHERE roomID = '$room' ORDER BY votes DESC LIMIT " . $start_limit . ',' . $limit;
             $result = $conn->query($sql);
           }
       else{
-        $sql = "SELECT * FROM archives ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
+        $sql = "SELECT * FROM archives WHERE roomID = '$room' ORDER BY date DESC LIMIT " . $start_limit . ',' . $limit;
         $result = $conn->query($sql);
       }
 
