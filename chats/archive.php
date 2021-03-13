@@ -43,12 +43,13 @@ session_start();
 
      	</div>
      </nav>
+<<?php
+ echo "<h3 class='blockquote text-center'>
+   Archive Page
+   <br>Room ID: '".$_SESSION['roomID']."'
+ </h3>";
 
-
- <br>
-  <h4>Archive Page</h4><br>
-
-
+?>
      <?php
      echo"<div class='dropdown'>
       <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>

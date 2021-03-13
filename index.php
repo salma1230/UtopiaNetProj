@@ -39,7 +39,14 @@ session_start();
 		 <h1 class="display-2">UtopiaNet</h1>
 		 <h3>Helping students help each other</h3>
 		 <button type="button" class="btn btn-outline-light btn-lg" onclick="location.href='chats/teacherLogin.php'">Teacher Login</button>
-		 <button type="button" class="btn btn-primary btn-lg"  onclick="location.href='chats/roomID.php'">Chat Page</button>
+     <?php
+     if(isset($_SESSION['id'])){
+     echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='chats/chats.php'><a href='chats/chats.php'>Chat Page</button>";
+     }else{
+      echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='chats/roomID.php'>Chat Page</button>";
+     }
+     ?>
+
 	 </div>
  </div>
 </div>

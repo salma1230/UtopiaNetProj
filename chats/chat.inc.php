@@ -99,7 +99,7 @@ else{
 }
 
 echo '<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">';
+  <br> <ul class="pagination justify-content-center">';
 for ($page=1;$page<=$number_of_pages;$page++){
 echo '<li class="page-item" ><a class="page-link" href="chats.php?page=' .$page. '">'  .$page.  '</a></li>';
 }
@@ -164,7 +164,7 @@ function getArchives($conn){
     }
 
     echo '<nav aria-label="Page navigation example">
-      <ul class="pagination justify-content-center">';
+      <br><ul class="pagination justify-content-center">';
     for ($page=1;$page<=$number_of_pages;$page++){
     echo '<li class="page-item" ><a class="page-link" href="chats.php?page=' .$page. '">'  .$page.  '</a></li>';
     }

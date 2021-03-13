@@ -17,7 +17,7 @@ echo "<nav class='navbar navbar-expand-md navbar-light bg-light sticky-top'>
      <a class='nav-link' href='../index.php#welcome'>Get Started</a>
    </li>
    <li class='nav-item'>
-     <a class='nav-link' href='../index.php#Demo'>Demo</a>
+     <a class='nav-link' href='../index.php#demo'>Demo</a>
    </li>
 ";
    ?>
