@@ -49,8 +49,11 @@ echo "<form method='POST' action='".setComments($conn)."'>
 <div class='form-group'>
 <input type = 'hidden' name='uid' value = 'anonymous'></input>
 <input type = 'hidden' name='date' value = '".date('Y-m-d H:i:s')."'></input>
-<h4 class='text-left'>Question/feedback:<h4>
-<textarea class = 'form-control col-xs-9 col-sm-9' name = 'message' rows= '3'> </textarea><br>
+<h3 class='blockquote text-center'>
+  Student Questions
+  <br>Room ID: '".$_SESSION['roomID']."'
+</h3>
+<textarea class = 'form-control mt-2 col-sm-12 col-lg-9' name = 'message' rows= '3'> </textarea><br>
 <button type = 'submit' class='btn btn-primary btn-lg' name = 'commentSubmit' >Submit</button>
 </div>
 <div class='dropdown'>
