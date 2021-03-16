@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 function setComments($conn){
   if(isset($_POST['commentSubmit'])){
 $room = $_SESSION['roomID'];
@@ -16,6 +22,13 @@ $result = $conn->query($sql);
   }
 }
 
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 function getComments($conn){
 $room = $_SESSION['roomID'];
 
@@ -110,6 +123,14 @@ echo '
 </nav>';
 }
 
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
+
 function getArchives($conn){
     $limit = 7;
     $room = $_SESSION['roomID'];
@@ -175,6 +196,13 @@ function getArchives($conn){
     </nav>';
 }
 
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 
 function deleteComments($conn){
   if(isset($_POST['commentDelete'])){
@@ -186,6 +214,13 @@ header("Location: chats.php");
   }
 }
 
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 function archive($conn){
   if(isset($_POST['setArchive'])){
   $cid = $_POST['cid'];
@@ -199,6 +234,13 @@ header("Location: chats.php?archiveSuccessful");
   }
 }
 
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 function replyComments($conn){
   if(isset($_POST['commentReply'])){
 $reply = "Reply:";
@@ -214,7 +256,13 @@ header("Location: chats.php");
   }
 }
 
-
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 function upvote($conn){
 
   if(isset($_POST['upvote'])){

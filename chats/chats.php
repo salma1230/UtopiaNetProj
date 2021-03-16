@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Europe/London');
-include 'dbh.inc.php';
-include 'chat.inc.php';
-include 'login.inc.php';
+include '../functions/dbh.inc.php';
+include '../functions/chat.inc.php';
+include '../functions/login.inc.php';
 //server keeps the session data for 3 hours
 ini_set('session.gc_maxlifetime', 10800);
 session_start();
@@ -15,9 +15,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chatwall</title>
 
-  <?php include('scripts.php'); ?>
+  <?php include('../scripts/scripts.php'); ?>
 
-    <link href="style2.css" rel="stylesheet">
+    <link href="../css/style2.css" rel="stylesheet">
   </head>
   <body>
     <!-- Navigation -->
