@@ -1,8 +1,8 @@
 <?php
 date_default_timezone_set('Europe/London');
-include 'chats/dbh.inc.php';
-include 'chats/chat.inc.php';
-include 'chats/login.inc.php';
+include 'functions/dbh.inc.php';
+include 'functions/chat.inc.php';
+include 'functions/login.inc.php';
 //server keeps the session data for 3 hours
 ini_set('session.gc_maxlifetime', 10800);
 session_start();
@@ -14,8 +14,8 @@ session_start();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>UtopiaNet</title>
-	<?php include('chats/scripts.php') ?>
-	<link href="style.css" rel="stylesheet">
+	<?php include('scripts/scripts.php') ?>
+	<link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>

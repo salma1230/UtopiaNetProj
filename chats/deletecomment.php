@@ -1,7 +1,8 @@
 <?php
 date_default_timezone_set('Europe/London');
-include 'dbh.inc.php';
-include 'chat.inc.php';
+include '../functions/dbh.inc.php';
+include '../functions/chat.inc.php';
+
  ?>
 
 <!DOCTYPE html>
@@ -9,7 +10,7 @@ include 'chat.inc.php';
   <head>
     <meta charset="utf-8">
     <title>ChatWall</title>
-    <link rel="stylesheet" type="text/css" href="style.css"
+    <link rel="stylesheet" type="text/css" href="../css/style.css"
   </head>
   <body>
 <?php

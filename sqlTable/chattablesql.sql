@@ -22,11 +22,8 @@ CREATE TABLE users (
 );
 
 
---Admin Credentials--
---username:'admin'
---password:'admin_pwd123'
 
---Table Structure for tabloe'archives'
+--Table Structure for table'archives'
 CREATE TABLE archive (
   cid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   uid VARCHAR(128) NOT NULL,

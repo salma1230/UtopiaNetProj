@@ -1,5 +1,12 @@
 <?php
-$username = "" ;
+
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 
 function getlogin($conn){
 if(isset($_POST['loginSubmit'])){
@@ -26,6 +33,16 @@ if(mysqli_num_rows($result) > 0){
 }
 }
 
+
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
+
+
 function userLogout(){
 if(isset($_POST['logoutSubmit'])){
 session_start();
@@ -37,6 +54,15 @@ exit();
 }
 
 }
+
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
+
 
 function reg($conn){
 if(isset($_POST['loginSubmit'])){
@@ -55,7 +81,7 @@ else{}
  *
  * param string $length Desired length of random string.
  *
- * retuen string Random string.
+ * return string Random string.
  */
 function readable_random_string($length = 6)
 {
@@ -76,6 +102,14 @@ function readable_random_string($length = 6)
     return $string;
 }
 
+
+/**
+ * Generates.
+ *
+ * param
+ *
+ * return.
+ */
 function validRoom($conn){
 
   if(isset($_POST['roomIDSubmit'])){
