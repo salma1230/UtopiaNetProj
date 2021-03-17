@@ -28,6 +28,9 @@ session_start();
      <li class="nav-item">
       <a class="nav-link" href="archive.php">Archives</a>
     </li>
+    <li class="nav-item">
+     <a class="nav-link" href="registerTeacher.php">Register Now</a>
+   </li>
        <?php
 
      if(isset($_SESSION['id'])){

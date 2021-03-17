@@ -1,79 +1,107 @@
 <?php
 
 /**
- * Generates.
+ * Validates user login attempt
  *
- * param
+ * param: connection to database ''$conn'
  *
- * return.
+ * return: None.
  */
 
 function getlogin($conn){
+  //If user selects button named 'loginSubmit'
 if(isset($_POST['loginSubmit'])){
-if(isset($_SESSION['id'])){
-echo "You are already logged in. Please Log Out first";
-}else{
-echo "You are not logged in";
-$username = $_POST['username'];
-$pwd = $_POST['password'];
-$sql = "SELECT * FROM users WHERE username = '$username'";
-$result = $conn->query($sql);
-if(mysqli_num_rows($result) > 0){
-    if($row = $result->fetch_assoc()){
-    $pwd_hash = password_verify($pwd, $row['password']);
-    $roomID = $row['roomID'];
-    $_SESSION['roomID'] = $roomID;
-    if($pwd_hash == true){
-    $_SESSION['id'] = $row['id'];
-    header("Location: chats.php?loginsuccess$roomID");
+  //Checks if the user is already logged in and displays appropiate erorr message
+    if(isset($_SESSION['id'])){
+       echo "You are already logged in. Please Log Out first";
+      }
+   //If no user is logged in
+    else{
+      //Retrieve the username and password inputted by the user
+      $username = $_POST['username'];
+      $pwd = $_POST['password'];
+      //Selects the row from the database with matching username
+      $sql = "SELECT * FROM users WHERE username = '$username'";
+      $result = $conn->query($sql);
+     //If there is an existing user with that username in the 'users' table
+      if(mysqli_num_rows($result) > 0){
+          if($row = $result->fetch_assoc()){
+          //Verify the user's password matched that of the password stored in the 'user' table.
+          $pwd_hash = password_verify($pwd, $row['password']);
+          //Retrieve the roomID assigned to the user
+          $roomID = $row['roomID'];
+          //Store the roomID in a session
+          $_SESSION['roomID'] = $roomID;
+          //If the password is true
+          if($pwd_hash == true){
+          //create an ID session and redirect to the 'chats.php' page.
+          $_SESSION['id'] = $row['id'];
+          header("Location: chats.php?loginsuccess$roomID");}
+          }
+      }
+    }
   }
 }
-}
-}
-}
-}
 
 
 /**
- * Generates.
+ * Logs user out of the system.
  *
- * param
+ * param: connection to database ''$conn'
  *
- * return.
+ * return: None
  */
-
 
 function userLogout(){
-if(isset($_POST['logoutSubmit'])){
-session_start();
-session_unset();
-session_destroy();
-header("Location: ../index.php");
-$_SESSION=array();
-exit();
+   //if the user selects the logout button
+  if(isset($_POST['logoutSubmit'])){
+  //Destroy all sessions
+  session_start();
+  session_unset();
+  session_destroy();
+  //Redirect to the main page
+  header("Location: ../index.php");
+  //Empty the session array
+  $_SESSION=array();
+  exit();
 }
 
 }
 
 /**
- * Generates.
+ * Registers a new user to the 'users' Table.
  *
- * param
+ * param: connection to database ''$conn'
  *
- * return.
+ * return: None
  */
-
-
 function reg($conn){
-if(isset($_POST['loginSubmit'])){
-  $username = $_POST['username'];
-  $pwd = $_POST['password'];
-  $roomID = readable_random_string();
-  $pwd_hash = password_hash($pwd, PASSWORD_DEFAULT);
-  $sql = "INSERT INTO users(username, password, roomID) VALUES('$username', '$pwd_hash', '$roomID')";
-  $result = $conn->query($sql);
+if(isset($_POST['regSubmit'])){
+  //Checks if the user is already logged in and displays appropiate erorr message
+    if(isset($_SESSION['id'])){
+       echo "You are already registered.";
+      }
+   //If no user is logged in
+    else{
+      //Retrieve the username and password inputted by the user
+      $username = $_POST['username'];
+      $pwd = $_POST['password'];
+      //Selects the row from the database with matching username
+      $sql = "SELECT * FROM users WHERE username = '$username'";
+      $result = $conn->query($sql);
+     //If there is an existing user with that username in the 'users' table, error messag displayed
+      if(mysqli_num_rows($result) > 0){
+     echo "There is already a user logged in with that name: Please enter another username";
+   }
+     else{
+      //create a random word for roomID and set it to the user.
+      $roomID = readable_random_string();
+      $pwd_hash = password_hash($pwd, PASSWORD_DEFAULT);
+      $sql = "INSERT INTO users(username, password, roomID) VALUES('$username', '$pwd_hash', '$roomID')";
+      $result = $conn->query($sql);
+     }
+   }
 }
-else{}
 }
 
 /**
@@ -104,27 +132,33 @@ function readable_random_string($length = 6)
 
 
 /**
- * Generates.
+ * Validates user's that arent logged in have entered an existing roomID to enter the chatpage.
  *
- * param
+ * param: connection to database ''$conn'
  *
- * return.
+ * return: None
  */
 function validRoom($conn){
-
+  //if user has selected the button 'roomIDSubmit'
   if(isset($_POST['roomIDSubmit'])){
-$roomID = $_POST['roomID'];
-$sql = "SELECT * FROM users WHERE roomID = '$roomID'";
-$result = $conn->query($sql);
-if(mysqli_num_rows($result)){
-    $_SESSION['roomID'] = $roomID;
-    header("Location: chats.php?$roomID");
-}
-else{
-  echo "<p>This roomID does not exist. Please try again.</p>";
+  //Retrieve the roomID
+  $roomID = $_POST['roomID'];
+  //Select any user from the database with matching roomID
+  $sql = "SELECT * FROM users WHERE roomID = '$roomID'";
+  $result = $conn->query($sql);
+  //If user with matching roomID exists create a roomID session and redirect to 'chats.php' page
+      if(mysqli_num_rows($result)){
+      $_SESSION['roomID'] = $roomID;
+      header("Location: chats.php?$roomID");
+       }
+   //if roomID does not exist display error message
+      else{
+      echo "<p>This roomID does not exist. Please try again.</p>";
+      }
+
+  }
 }
 
-}
-}
+
 
 ?>
