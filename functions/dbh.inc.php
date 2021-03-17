@@ -4,5 +4,6 @@ $conn = mysqli_connect('localhost', 'root', '', 'chatwall');
 
 //If no connection can be established display error message.
 if(!$conn){
-  die("Connection failed: ".mysqli_connect_error());
-}
+        die ("Connection Terminated! by Die() function". mysqLi_connect_error());
+
+    }

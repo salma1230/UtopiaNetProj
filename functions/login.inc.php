@@ -36,10 +36,15 @@ if(isset($_POST['loginSubmit'])){
           if($pwd_hash == true){
           //create an ID session and redirect to the 'chats.php' page.
           $_SESSION['id'] = $row['id'];
-          header("Location: chats.php?loginsuccess$roomID");}
+          header("Location: chats.php?loginsuccess$roomID");
+          return True;
+        }
           }
       }
     }
+  }
+  else{
+    return False;
   }
 }
 
@@ -53,7 +58,7 @@ if(isset($_POST['loginSubmit'])){
  */
 
 function userLogout(){
-   //if the user selects the logout button
+  //if the user selects the logout button
   if(isset($_POST['logoutSubmit'])){
   //Destroy all sessions
   session_start();
@@ -64,7 +69,10 @@ function userLogout(){
   //Empty the session array
   $_SESSION=array();
   exit();
-}
+   }
+   else{
+     return False;
+   }
 
 }
 
@@ -102,6 +110,9 @@ if(isset($_POST['regSubmit'])){
      }
    }
 }
+   else {
+     return False;
+   }
 }
 
 /**
@@ -157,8 +168,10 @@ function validRoom($conn){
       }
 
   }
+  else{
+    return False;
+  }
 }
-
 
 
 ?>
