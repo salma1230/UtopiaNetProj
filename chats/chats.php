@@ -62,7 +62,7 @@ echo "<form method='POST' action='".setComments($conn)."'>
  </button>
 </form>";
 
-echo "<form method='POST' action='".getComments($conn)."'>
+echo "<form method='POST' action='".getChatComments($conn)."'>
   <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
     <button class='dropdown-item' type='submit' name='vote'>Votes: High to Low</button>
     <button class='dropdown-item' type='submit' name ='dateEarliest'>Date: Earliest to Latest</button>
