@@ -36,10 +36,15 @@ if(isset($_POST['loginSubmit'])){
           if($pwd_hash == true){
           //create an ID session and redirect to the 'chats.php' page.
           $_SESSION['id'] = $row['id'];
-          header("Location: chats.php?loginsuccess$roomID");
-          return True;
+          header("Location: chats.php?loginsuccess");
+        }
+        else{
+          echo "Incorrect Password. Please try again";
         }
           }
+      }
+      else{
+      echo "That username does not exist";
       }
     }
   }

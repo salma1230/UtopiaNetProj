@@ -15,6 +15,7 @@ session_start();
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Chatwall</title>
   <?php include('../scripts/scripts.php'); ?>
+     <link href="../css/style.css" rel="stylesheet">
      <link href="../css/style3.css" rel="stylesheet">
    </head>
 
