@@ -16,16 +16,29 @@ function setComments($conn){
   $uid = $_POST['uid'];
   $date = $_POST['date'];
   $message = $_POST['message'];
-  $message_with_title = $message_title . ' '. $message;
-  //set the votes to 0
-  $votes = 0;
+  $message1 = preg_replace('/\s+/', '', $message);
+ if(empty($message1)){
+   return False;
+ }
+    else{
+    $message_with_title = $message_title . ' '. $message;
+    //set the votes to 0
+    $votes = 0;
+    //Insert new comment data into a new row in 'chat' Table
+    $sql = "INSERT INTO chat (uid, date, message, votes, roomID)
+    VALUES ('$uid', '$date', '$message_with_title', '$votes', '$room')";
 
-  //Insert new comment data into a new row in 'chat' Table
-  $sql = "INSERT INTO chat (uid, date, message, votes, roomID)
-  VALUES ('$uid', '$date', '$message_with_title', '$votes', '$room')";
-
-   $result = $conn->query($sql);
+     $result = $conn->query($sql);
+     header("Location: ../chats/chats.php");
+     return True;
+         ;
   }
+
+
+}
+else{
+  return False;
+}
 }
 
 /**
