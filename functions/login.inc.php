@@ -159,19 +159,23 @@ function validRoom($conn){
   if(isset($_POST['roomIDSubmit'])){
   //Retrieve the roomID
   $roomID = $_POST['roomID'];
+  if(!empty($roomID)){
   //Select any user from the database with matching roomID
   $sql = "SELECT * FROM users WHERE roomID = '$roomID'";
   $result = $conn->query($sql);
   //If user with matching roomID exists create a roomID session and redirect to 'chats.php' page
-      if(mysqli_num_rows($result)){
+      if(mysqli_num_rows($result)>0){
       $_SESSION['roomID'] = $roomID;
       header("Location: chats.php?$roomID");
        }
    //if roomID does not exist display error message
       else{
-      echo "<p>This roomID does not exist. Please try again.</p>";
+      echo "This roomID does not exist. Please try again.";
       }
-
+}
+else{
+  echo "No ID has been entered. Please provide the room ID.";
+}
   }
   else{
     return False;

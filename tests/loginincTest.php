@@ -67,16 +67,29 @@ use PHPUnit\Framework\TestCase;
            require 'functions/dbh.inc.php';
            $this->assertEquals(False,validRoom($conn));
     }
-    
+
     public function testvalidroomReturnsErrorMessageWhenInvalidRoomID(): void {
       //returns false when if username has no value/doesn't exist.
            require 'functions/dbh.inc.php';
            $_POST['roomIDSubmit'] = "Submit";
            $_POST['roomID'] = "abc";
-           $error = "<p>This roomID does not exist. Please try again.</p>";
+           $error = "This roomID does not exist. Please try again.";
            $this->expectOutputString($error);
            validRoom($conn);
+
     }
+
+    public function testvalidroomReturnsErrorMessageWhenNoRoomID(): void {
+      //returns false when if username has no value/doesn't exist.
+           require 'functions/dbh.inc.php';
+           $_POST['roomIDSubmit'] = "Submit";
+           $_POST['roomID'] = "";
+           $error = "No ID has been entered. Please provide the room ID.";
+           $this->expectOutputString($error);
+           validRoom($conn);
+
+    }
+
 
 
 
