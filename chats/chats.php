@@ -62,6 +62,15 @@ echo "<form method='POST' action='".setComments($conn)."'>
  </button>
 </form>";
 
+if(isset($_SESSION['id'])){
+echo "<form method='POST' action='".clearChat($conn)."'>
+<div class='form-group'>
+<button type = 'submit' class='btn btn-primary btn-lg' name = 'clearComments' >CLEAR ALL</button>
+    </div>
+</form>";
+}
+
+
 echo "<form method='POST' action='".getChatComments($conn)."'>
   <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
     <button class='dropdown-item' type='submit' name='vote'>Votes: High to Low</button>
@@ -70,6 +79,9 @@ echo "<form method='POST' action='".getChatComments($conn)."'>
   </div>
 </div>
 </form>";
+
+
+
 ?>
 
 

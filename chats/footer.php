@@ -5,14 +5,13 @@
 		<div class='col-md-6'>
 			<img src='img/logo2.png'>
 			<hr class='light'>
-			<p>Phone number here</p>
-			<p>Email address</P>
-			<p>Street Address</P>
-			<p>Post code</P>
+			<p>Salma.Mahmood1230@gmail.com</P>
+			<p>United Kingdom</P>
+			<p>Birmingham</P>
 		</div>
 		<div class='col-md-6'>
 		<hr class='light'>
-		<h5>Our hours</h5>
+		<h5>Our Contact hours</h5>
 		<hr class='light'>
 		<p>Monday: 9am-5pm</p>
 		<p>Saturday: 10am-4pm</p>

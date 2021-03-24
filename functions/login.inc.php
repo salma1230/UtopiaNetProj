@@ -99,6 +99,7 @@ if(isset($_POST['regSubmit'])){
       //Retrieve the username and password inputted by the user
       $username = $_POST['username'];
       $pwd = $_POST['password'];
+      $email = $_POST['email'];
       //Selects the row from the database with matching username
       $sql = "SELECT * FROM users WHERE username = '$username'";
       $result = $conn->query($sql);
@@ -110,8 +111,9 @@ if(isset($_POST['regSubmit'])){
       //create a random word for roomID and set it to the user.
       $roomID = readable_random_string();
       $pwd_hash = password_hash($pwd, PASSWORD_DEFAULT);
-      $sql = "INSERT INTO users(username, password, roomID) VALUES('$username', '$pwd_hash', '$roomID')";
+      $sql = "INSERT INTO users(username,email, password, roomID) VALUES('$username', '$email', '$pwd_hash', '$roomID')";
       $result = $conn->query($sql);
+      header("Location: ../chats/teacherLogin");
      }
    }
 }
@@ -182,5 +184,25 @@ else{
   }
 }
 
+/**
+ * Sends Email when User has forgotten their password
+ *
+ * param: connection to database ''$conn'
+ *
+ * return: None
+ */
+
+function sendEmail($conn){
+  if(isset($_POST['emailSubmit'])){
+$to = $_POST['email'];
+$subject = "Reset Password";
+$txt = "Please click the link below to reset your password";
+$headers = "From: utopianetproject@gmail.com" . "\r\n";
+
+mail($to,$subject,$txt,$headers);
+header("Location: teacherLogin.php");
+
+  }
+}
 
 ?>

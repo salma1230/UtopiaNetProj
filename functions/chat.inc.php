@@ -18,7 +18,28 @@ function setComments($conn){
   $message = $_POST['message'];
   $message1 = preg_replace('/\s+/', '', $message);
  if(empty($message1)){
+   $errormsg = "Error:NoTextEntered";
+   header("Location: ../chats/chats.php?$room?$errormsg");
    return False;
+ }
+ else if(strlen($message1)>245){
+  $errormsg = "Error:TooManyCharacters";
+  header("Location: ../chats/chats.php?$room?$errormsg");
+  return False;
+ }
+ else if(isset($_SESSION['id'])){
+   $teacherComment = "[TEACHER]";
+   $message_with_title = $message_title . ' '.$teacherComment.' '.$message;
+   //set the votes to 0
+   $votes = 0;
+   //Insert new comment data into a new row in 'chat' Table
+   $sql = "INSERT INTO chat (uid, date, message, votes, roomID)
+   VALUES ('$uid', '$date', '$message_with_title', '$votes', '$room')";
+
+    $result = $conn->query($sql);
+    header("Location: ../chats/chats.php?$room");
+    return True;
+
  }
     else{
     $message_with_title = $message_title . ' '. $message;
@@ -29,9 +50,9 @@ function setComments($conn){
     VALUES ('$uid', '$date', '$message_with_title', '$votes', '$room')";
 
      $result = $conn->query($sql);
-     header("Location: ../chats/chats.php");
+     header("Location: ../chats/chats.php?$room");
      return True;
-         ;
+
   }
 
 
@@ -308,14 +329,37 @@ function replyComments($conn){
   $uid = $_POST['uid'];
   $date = $_POST['date'];
   $message = $_POST['message'];
+  //retrieve the current roomID
+  $room = $_SESSION['roomID'];
+  //If teacher is logged in, alter message in post.
+      if(isset($_SESSION['id'])){
+        $teacherComment = "[TEACHER]";
+        //Increment the reply to the message
+        $message1 = '\r\n'.'\r\n'. $reply . ' ' .$teacherComment.' '.$message;
+        //concatonate the reply to the message and update its value in the 'chats' table.
+        $sql = "UPDATE chat SET message=CONCAT(message, '$message1') WHERE cid ='$cid'";
+
+        $result = $conn->query($sql);
+        header("Location: chats.php?$room");
+         return True;
+
+      }
+
+else{
   //Increment the reply to the message
   $message1 = '\r\n'.'\r\n'. $reply . ' ' . $message;
 
   //concatonate the reply to the message and update its value in the 'chats' table.
   $sql = "UPDATE chat SET message=CONCAT(message, '$message1') WHERE cid ='$cid'";
   $result = $conn->query($sql);
-  header("Location: chats.php");
+  header("Location: chats.php?$room");
+  return true;
+}
   }
+  else{
+    return False;
+  }
+
 }
 
 /**
@@ -333,3 +377,24 @@ function upvote($conn){
   $result = $conn->query($sql);
 }
 }
+/**
+ * Clears all posts in chat page.
+ *
+ * param: Connection to database '$conn'
+ *
+ * return:None
+ */
+ function clearChat($conn){
+   //current roomID is stored into variable $room
+   $room = $_SESSION['roomID'];
+   //if the button named 'clearComments' is selected by the user
+   if(isset($_POST['clearComments'])){
+     //retrieve the commentID
+     $cid = $_POST['cid'];
+     //Delete all comments with roomID
+     $sql = "DELETE FROM chat WHERE roomID = '$room'";
+     $result = $conn->query($sql);
+     header("Location: chats.php?$room");
+   }
+
+ }

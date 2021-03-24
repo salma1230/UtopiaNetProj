@@ -23,12 +23,6 @@ session_start();
    <body>
      <!-- Navigation Needs updating -->
 <?php include('navbar.php'); ?>
-      <li class="nav-item">
-        <a class="nav-link" href="chats.php">Chat Page</a>
-      </li>
-     <li class="nav-item">
-      <a class="nav-link" href="archive.php">Archives</a>
-    </li>
        <?php
 
      if(isset($_SESSION['id'])){
