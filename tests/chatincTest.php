@@ -29,12 +29,15 @@ use PHPUnit\Framework\TestCase;
          "actual value is equals to expected"
      );
 
-
+     //Delete test comment from the database
       $sql2 = "DELETE FROM chat WHERE uid='$uid'";
       $result = $conn->query($sql2);
     }
 
-    public function testSetCommentsReturnsFalseWhenInputIncorrect(): void
+    /**
+        * @runInSeparateProcess
+        */
+    public function testSetCommentsReturnsFalseWhenEmptyComment(): void
     {
       require 'functions/dbh.inc.php';
       require 'functions/chat.inc.php';
@@ -43,6 +46,25 @@ use PHPUnit\Framework\TestCase;
       $_POST['uid'] = "Test";
       $_POST['date'] = "";
       $_POST['message'] = "";
+      $this->assertEquals(False,setComments($conn));
+
+
+    }
+
+    /**
+        * @runInSeparateProcess
+        */
+    public function testSetCommentsReturnsFalseWhenCommentTooLong(): void
+    {
+      require 'functions/dbh.inc.php';
+      require 'functions/chat.inc.php';
+      $_POST['commentSubmit'] = "submit";
+      $_SESSION['roomID'] = "huyopa";
+      $_POST['uid'] = "Test";
+      $_POST['date'] = "";
+      $_POST['message'] = "In addition to what Lawrence said about assigning a default value, one can now use the Null Coalescing Operator (PHP 7). Hence when we want to assign a default value we can write:
+//assigns the fruit variable content to a if the fruit variable exists or has a value that is not NULL, or assigns the value 'apple' to a if the fruit variable doesn't exists or it contains the NULL value
+";
       $this->assertEquals(False,setComments($conn));
 
 

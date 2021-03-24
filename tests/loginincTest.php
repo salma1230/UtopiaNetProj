@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 {
     public function testReadable_Random_StringReturnsString(): void
     {
+      //Checks if each word is of length 6
            require 'functions/login.inc.php';
            $word = readable_random_string($length = 6);
            $this->assertIsString($word,"String not returned");

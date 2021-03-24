@@ -16,6 +16,7 @@ session_start();
      <title>Chatwall</title>
   <?php include('../scripts/scripts.php'); ?>
      <link href="../css/style3.css" rel="stylesheet">
+      <link href="../css/style.css" rel="stylesheet">
    </head>
 
 
@@ -94,7 +95,7 @@ session_start();
   						<input type='submit' value='Register' name='regSubmit' class='btn float-right login_btn'>
   					</div>
   				</form>";
-          
+
           ?>
   			</div>
       </div>

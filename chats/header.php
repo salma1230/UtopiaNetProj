@@ -17,10 +17,10 @@ echo "<nav class='navbar navbar-expand-md navbar-light bg-light fixed-top'>
 		 <a class='nav-link' href='#welcome'>Get started</a>
 	 </li>
 	 <li class='nav-item'>
-		 <a class='nav-link' href='#demo'>Demo</a>
+		 <a class='nav-link' href='#Terms'>T&C</a>
 	 </li>
 	 <li class='nav-item'>
-		 <a class='nav-link' href='#team'>Team</a>
+		 <a class='nav-link' href='#About'>About Us</a>
 	 </li>
 	 <li class='nav-item'>
 		 <a class='nav-link' href='#Philosophy'>Philosophy</a>

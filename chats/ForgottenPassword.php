@@ -16,7 +16,7 @@ session_start();
      <title>Chatwall</title>
   <?php include('../scripts/scripts.php'); ?>
      <link href="../css/style3.css" rel="stylesheet">
-     <link href="../css/style.css" rel="stylesheet">
+      <link href="../css/style.css" rel="stylesheet">
    </head>
 
 
@@ -29,9 +29,6 @@ session_start();
      <li class="nav-item">
       <a class="nav-link" href="archive.php">Archives</a>
     </li>
-    <li class="nav-item">
-     <a class="nav-link" href="registerTeacher.php">Register Now</a>
-   </li>
        <?php
 
      if(isset($_SESSION['id'])){
@@ -60,42 +57,28 @@ session_start();
           <div class="container">
 
 
-<!--Register Section-->
+<!--ForgottenPassword Section-->
   	<div class="d-flex justify-content-center h-100">
   		<div class="card">
   			<div class="card-header">
-  				<h3>Sign In</h3>
+  				<h3>Register now to set up a room for your students!</h3>
 
   			</div>
   			<div class="card-body">
           <?php
-  	echo"	<form method='POST' action= '".getLogin($conn)."'>
-  					<div class='input-group form-group'>
-  						<div class='input-group-prepend'>
-  							<span class='input-group-text'><i class='fas fa-user'></i></span>
-  						</div>
-  						<input type='text' class='form-control' name='username' placeholder='username'>
-  					</div>
+  	echo"	<form method='POST' action= '".sendEmail($conn)."'>
 
-  					<div class='input-group form-group'>
-  						<div class='input-group-prepend'>
-  							<span class='input-group-text'><i class='fas fa-key'></i></span>
-  						</div>
-            	<input type='password' name ='password'class='form-control' placeholder='password'>
-  					</div>
-
-          	<div class='row align-items-center remember'>
-  						<input type='checkbox'>Remember Me &nbsp;&nbsp;
-                <a class = 'register' href = 'registerTeacher.php'>Not Registered</a>
-                &nbsp;&nbsp; <a class = 'register' href = 'ForgottenPassword.php'>Forgotten Password</a>
-  					</div>
-
-
-
+            <div class='input-group form-group'>
+              <div class='input-group-prepend'>
+                <span class='input-group-text'><i class='fas fa-user'></i></span>
+              </div>
+              <input type='text' name ='email' class='form-control' placeholder='email@example.com'>
+            </div>
           	<div class='form-group'>
-  						<input type='submit' value='Login' name='loginSubmit' class='btn float-right login_btn'>
+  						<input type='submit' value='reset' name='emailSubmit' class='btn float-right login_btn'>
   					</div>
   				</form>";
+
           ?>
   			</div>
       </div>

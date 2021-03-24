@@ -26,9 +26,7 @@ session_start();
      	 <li class="nav-item">
      		 <a class="nav-link" href="chats.php">Chat Page</a>
      	 </li>
-       <li class="nav-item">
-        <a class="nav-link" href="archive.php">Archives</a>
-      </li>
+
 
        <?php
  if(isset($_SESSION['id'])){
@@ -51,6 +49,11 @@ session_start();
 
 ?>
      <?php
+
+         echo "<br><button onClick='window.print()''>Print</button>";
+
+
+
      echo"<div class='dropdown'>
       <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenu2' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
         Sort By
@@ -63,6 +66,7 @@ session_start();
          <button class='dropdown-item' type='submit' name='dateLatest'>Date: Latest to Earliest</button>
        </div>
      </form>";
+
      ?>
 
      <!--- Footer -->
