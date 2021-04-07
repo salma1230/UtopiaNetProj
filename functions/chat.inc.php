@@ -16,7 +16,9 @@ function setComments($conn){
   $uid = $_POST['uid'];
   $date = $_POST['date'];
   $message = $_POST['message'];
-  $message1 = preg_replace('/\s+/', '', $message);
+  //sanitize message by only allowing strings and letters
+  $message_sanitized = str_ireplace(["!", ")", "DROP", ";", "=", "UNION", "/" , "*"]," ", $message);
+  $message1 = preg_replace('/\s+/', '', $message_sanitized);
  if(empty($message1)){
    $errormsg = "Error:NoTextEntered";
    header("Location: ../chats/chats.php?$room?$errormsg");
@@ -27,9 +29,9 @@ function setComments($conn){
   header("Location: ../chats/chats.php?$room?$errormsg");
   return False;
  }
- else if(isset($_SESSION['id'])){
+ else if(isset($_SESSION['id']) ){
    $teacherComment = "[TEACHER]";
-   $message_with_title = $message_title . ' '.$teacherComment.' '.$message;
+   $message_with_title = $message_title . ' '.$teacherComment.' '.$message_sanitized;
    //set the votes to 0
    $votes = 0;
    //Insert new comment data into a new row in 'chat' Table
@@ -42,7 +44,7 @@ function setComments($conn){
 
  }
     else{
-    $message_with_title = $message_title . ' '. $message;
+    $message_with_title = $message_title . ' '. $message_sanitized;
     //set the votes to 0
     $votes = 0;
     //Insert new comment data into a new row in 'chat' Table
@@ -329,13 +331,26 @@ function replyComments($conn){
   $uid = $_POST['uid'];
   $date = $_POST['date'];
   $message = $_POST['message'];
+  //sanitize message by only allowing strings and letters
+  $message_sanitized = str_ireplace(["!", ")", "DROP", ";", "=", "UNION", "/" , "*", "delete","update" ]," ", $message);
+  $message_replace = preg_replace('/\s+/', '', $message_sanitized);
   //retrieve the current roomID
   $room = $_SESSION['roomID'];
   //If teacher is logged in, alter message in post.
-      if(isset($_SESSION['id'])){
+ if(empty($message_replace)){
+   $errormsg = "Error:NoTextEntered";
+   header("Location: ../chats/chats.php?$room?$errormsg");
+   return False;
+ }
+ else if(strlen($message_replace)>245){
+  $errormsg = "Error:TooManyCharacters";
+  header("Location: ../chats/chats.php?$room?$errormsg");
+  return False;
+ }
+  else if(isset($_SESSION['id'])){
         $teacherComment = "[TEACHER]";
         //Increment the reply to the message
-        $message1 = '\r\n'.'\r\n'. $reply . ' ' .$teacherComment.' '.$message;
+        $message1 = '\r\n'.'\r\n'. $reply . ' ' .$teacherComment.' '.$message_sanitized;
         //concatonate the reply to the message and update its value in the 'chats' table.
         $sql = "UPDATE chat SET message=CONCAT(message, '$message1') WHERE cid ='$cid'";
 
@@ -347,7 +362,7 @@ function replyComments($conn){
 
 else{
   //Increment the reply to the message
-  $message1 = '\r\n'.'\r\n'. $reply . ' ' . $message;
+  $message1 = '\r\n'.'\r\n'. $reply . ' ' . $message_sanitized;
 
   //concatonate the reply to the message and update its value in the 'chats' table.
   $sql = "UPDATE chat SET message=CONCAT(message, '$message1') WHERE cid ='$cid'";

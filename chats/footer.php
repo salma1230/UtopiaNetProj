@@ -5,7 +5,7 @@
 		<div class='col-md-6'>
 			<img src='img/logo2.png'>
 			<hr class='light'>
-			<p>Salma.Mahmood1230@gmail.com</P>
+			<p>utopianetproject@gmail.com</P>
 			<p>United Kingdom</P>
 			<p>Birmingham</P>
 		</div>
