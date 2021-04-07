@@ -61,7 +61,7 @@ session_start();
   	<div class="d-flex justify-content-center h-100">
   		<div class="card">
   			<div class="card-header">
-  				<h3>Register now to set up a room for your students!</h3>
+  				<h3>Enter your account email</h3>
 
   			</div>
   			<div class="card-body">

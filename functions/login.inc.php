@@ -19,10 +19,15 @@ if(isset($_POST['loginSubmit'])){
     else{
       //Retrieve the username and password inputted by the user
       $username = $_POST['username'];
-      $pwd = $_POST['password'];
-      //Selects the row from the database with matching username
-      $sql = "SELECT * FROM users WHERE username = '$username'";
-      $result = $conn->query($sql);
+      //sanitize username by only allowing strings and letters
+      $username_sanitized = str_ireplace(["!", ")", "DROP", ";", "=", "UNION", "/" , "*"]," ", $username);
+      $username1 = preg_replace('/\s+/', '', $username);
+      if(!empty($username1)){
+        $pwd = $_POST['password'];
+        //Selects the row from the database with matching username
+        $sql = "SELECT * FROM users WHERE username = '$username_sanitized'";
+        $result = $conn->query($sql);
+      }
      //If there is an existing user with that username in the 'users' table
       if(mysqli_num_rows($result) > 0){
           if($row = $result->fetch_assoc()){
@@ -98,11 +103,22 @@ if(isset($_POST['regSubmit'])){
     else{
       //Retrieve the username and password inputted by the user
       $username = $_POST['username'];
+      //sanitize username by only allowing strings and letters
+      $username_sanitized = str_ireplace(["!", ")", "DROP", ";", "=", "UNION", "/" , "*"]," ", $username);
+      $username1 = preg_replace('/\s+/', '', $username_sanitized);
+      //if usename is empty return message
+     if(empty($username1)){
+       $errormsg = "Error:NoUsernameEntered";
+        echo "A valid username has not been entered";
+       return False;
+     }
       $pwd = $_POST['password'];
       $email = $_POST['email'];
+
       //Selects the row from the database with matching username
-      $sql = "SELECT * FROM users WHERE username = '$username'";
+      $sql = "SELECT * FROM users WHERE username = '$username_sanitized'";
       $result = $conn->query($sql);
+
      //If there is an existing user with that username in the 'users' table, error messag displayed
       if(mysqli_num_rows($result) > 0){
      echo "There is already a user logged in with that name: Please enter another username";
@@ -111,10 +127,17 @@ if(isset($_POST['regSubmit'])){
       //create a random word for roomID and set it to the user.
       $roomID = readable_random_string();
       $pwd_hash = password_hash($pwd, PASSWORD_DEFAULT);
-      $sql = "INSERT INTO users(username,email, password, roomID) VALUES('$username', '$email', '$pwd_hash', '$roomID')";
+      // Remove all illegal characters from email
+      $email2 = filter_var($email, FILTER_SANITIZE_EMAIL);
+      if(filter_var($email2, FILTER_VALIDATE_EMAIL)){
+      $sql = "INSERT INTO users(username,email, password, roomID) VALUES('$username_sanitized', '$email', '$pwd_hash', '$roomID')";
       $result = $conn->query($sql);
-      header("Location: ../chats/teacherLogin");
-     }
+      header("Location: ../chats/teacherLogin.php");
+    }
+    else{
+      echo "invalid email";
+    }
+  }
    }
 }
    else {
@@ -161,14 +184,17 @@ function validRoom($conn){
   if(isset($_POST['roomIDSubmit'])){
   //Retrieve the roomID
   $roomID = $_POST['roomID'];
+  //sanitize roomID by only allowing strings
+  $roomID_sanitized = preg_replace("/[^A-Za-z0-9?!]/",'',$roomID);
+  $roomID = preg_replace('/\s+/', '', $roomID_sanitized);
   if(!empty($roomID)){
   //Select any user from the database with matching roomID
-  $sql = "SELECT * FROM users WHERE roomID = '$roomID'";
+  $sql = "SELECT * FROM users WHERE roomID = '$roomID_sanitized'";
   $result = $conn->query($sql);
   //If user with matching roomID exists create a roomID session and redirect to 'chats.php' page
       if(mysqli_num_rows($result)>0){
-      $_SESSION['roomID'] = $roomID;
-      header("Location: chats.php?$roomID");
+      $_SESSION['roomID'] = $roomID_sanitized;
+      header("Location: chats.php?$roomID_sanitized");
        }
    //if roomID does not exist display error message
       else{
@@ -194,15 +220,56 @@ else{
 
 function sendEmail($conn){
   if(isset($_POST['emailSubmit'])){
-$to = $_POST['email'];
-$subject = "Reset Password";
-$txt = "Please click the link below to reset your password";
-$headers = "From: utopianetproject@gmail.com" . "\r\n";
 
-mail($to,$subject,$txt,$headers);
-header("Location: teacherLogin.php");
+  $to = $_POST['email'];
+  // Remove all illegal characters from email
+  $email = filter_var($to, FILTER_SANITIZE_EMAIL);
+    if(!empty($to) && filter_var($email, FILTER_VALIDATE_EMAIL) ){
+    //Select any user from the database with matching email
+    $sql = "SELECT * FROM users WHERE email = '$to'";
+    $result = $conn->query($sql);
+    //If user with matching email exists send email to reset password.
+        if(mysqli_num_rows($result)> 0){
+        $_SESSION['email'] = $to;
+        $subject = "Reset Password";
+        $txt = "Please click the link below to reset your password";
+        $headers = "From: utopianetproject@gmail.com" . "\r\n";
 
+        mail($to,$subject,$txt,$headers);
+        header("Location: teacherLogin.php");
+
+         }
+     //if email does not exist display error message
+        else{
+        echo $to;
+        echo "An account with this email does not exist. Please register to use UtopiaNet.";
+        }
   }
+  else{
+    echo "No email has been entered. Please provide an email.";
+  }
+
+    }
+}
+
+function resetpassword($conn){
+  if(isset($_POST['newPasswordSubmit'])){
+
+    $email1  =  $_POST['email'];
+    // Remove all illegal characters from email
+    $email2 = filter_var($email1, FILTER_SANITIZE_EMAIL);
+    $newPwd = $_POST['password'];
+    $newPwd2 = $_POST['password2'];
+
+    if(($newPwd == $newPwd2) && !empty($newPwd) && filter_var($email2, FILTER_VALIDATE_EMAIL) ){
+    $pwd_hash = password_hash($newpwd, PASSWORD_DEFAULT);
+    $sql = "UPDATE users SET password = '$pwd_hash' WHERE email = '$email1'";
+    $result = $conn->query($sql);
+    }
+    else{
+      echo "empty password.";
+    }
+}
 }
 
 ?>

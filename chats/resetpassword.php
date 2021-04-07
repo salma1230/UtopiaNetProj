@@ -15,14 +15,20 @@ session_start();
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Chatwall</title>
   <?php include('../scripts/scripts.php'); ?>
-     <link href="../css/style.css" rel="stylesheet">
      <link href="../css/style3.css" rel="stylesheet">
+      <link href="../css/style.css" rel="stylesheet">
    </head>
 
 
    <body>
-     <!-- Navigation Needs updating -->
+     <!-- Navigation -->
 <?php include('navbar.php'); ?>
+      <li class="nav-item">
+        <a class="nav-link" href="chats.php">Chat Page</a>
+      </li>
+     <li class="nav-item">
+      <a class="nav-link" href="archive.php">Archives</a>
+    </li>
        <?php
 
      if(isset($_SESSION['id'])){
@@ -51,26 +57,30 @@ session_start();
           <div class="container">
 
 
-<!--RoomID Section-->
+<!--ForgottenPassword Section-->
   	<div class="d-flex justify-content-center h-100">
   		<div class="card">
   			<div class="card-header">
-  				<h3>Enter Room ID</h3>
+  				<h3>Enter your new password</h3>
 
   			</div>
   			<div class="card-body">
           <?php
-  	echo"	<form method='POST' action= '".validRoom($conn)."'>
-  					<div class='input-group form-group'>
-  						<div class='input-group-prepend'>
-  							<span class='input-group-text'><i class='fas fa-user'></i></span>
-  						</div>
-  						<input type='text' maxlength='6' class='form-control' name='roomID' placeholder='roomID'>
-  					</div>
+  	echo"	<form method='POST' action= '".resetPassword($conn)."'>
+    <div class='input-group form-group'>
+      <input type='text' name ='email' class='form-control' placeholder='email@example.com'>
+    </div>
+            <div class='input-group form-group'>
+
+              <input type='text' name ='password' class='form-control' placeholder='New password'>
+            </div>
+            <input type='text' name ='password2' class='form-control' placeholder='Re-enter new password'>
+          </div>
           	<div class='form-group'>
-  						<input type='submit' value='login' name='roomIDSubmit' class='btn float-right login_btn'>
+  						<input type='submit' value='reset' name='newPasswordSubmit' class='btn float-right login_btn'>
   					</div>
   				</form>";
+
           ?>
   			</div>
       </div>

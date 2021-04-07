@@ -61,7 +61,7 @@ session_start();
   	<div class="d-flex justify-content-center h-100">
   		<div class="card">
   			<div class="card-header">
-  				<h3>Register now to set up a room for your students!</h3>
+  				<h3>Register now to set up a room!</h3>
 
   			</div>
   			<div class="card-body">
@@ -71,7 +71,7 @@ session_start();
   						<div class='input-group-prepend'>
   							<span class='input-group-text'><i class='fas fa-user'></i></span>
   						</div>
-  						<input type='text' class='form-control' name='username' placeholder='username'>
+  						<input type='text'  maxlength='10' class='form-control' name='username' placeholder='username'>
   					</div>
 
             <div class='input-group form-group'>
