@@ -1,5 +1,5 @@
 <?php
-
+require_once 'Token.php';
 /**
  * Validates user login attempt
  *
@@ -10,7 +10,7 @@
 
 function getlogin($conn){
   //If user selects button named 'loginSubmit'
-if(isset($_POST['loginSubmit'])){
+if(isset($_POST['loginSubmit']) && Token::check($_POST['token'])){
   //Checks if the user is already logged in and displays appropiate erorr message
     if(isset($_SESSION['id'])){
        echo "You are already logged in. Please Log Out first";
@@ -94,7 +94,7 @@ function userLogout(){
  * return: None
  */
 function reg($conn){
-if(isset($_POST['regSubmit'])){
+if(isset($_POST['regSubmit']) && Token::check($_POST['token'])){
   //Checks if the user is already logged in and displays appropiate erorr message
     if(isset($_SESSION['id'])){
        echo "You are already registered.";
@@ -181,7 +181,7 @@ function readable_random_string($length = 6)
  */
 function validRoom($conn){
   //if user has selected the button 'roomIDSubmit'
-  if(isset($_POST['roomIDSubmit'])){
+  if(isset($_POST['roomIDSubmit']) && Token::check($_POST['token'])){
   //Retrieve the roomID
   $roomID = $_POST['roomID'];
   //sanitize roomID by only allowing strings
@@ -253,7 +253,7 @@ function sendEmail($conn){
 }
 
 function resetpassword($conn){
-  if(isset($_POST['newPasswordSubmit'])){
+  if(isset($_POST['newPasswordSubmit']) && Token::check($_POST['token'])){
 
     $email1  =  $_POST['email'];
     // Remove all illegal characters from email

@@ -1,4 +1,5 @@
 <?php
+require_once 'Token.php';
 /**
  * Generates a  new comment and inserts it as a new row into 'chat' database when user submits a question/post, called in 'chats.php'.
  *
@@ -8,7 +9,7 @@
  */
 function setComments($conn){
   //if the button named 'commentSubmit' is selectd by the user insert it under a new row in the 'chat' table.
-  if(isset($_POST['commentSubmit'])){
+  if(isset($_POST['commentSubmit']) && Token::check($_POST['token'])){
   //retrieve the current roomID
   $room = $_SESSION['roomID'];
   //Retieve relevant information from comment
@@ -119,7 +120,7 @@ if(isset($_POST['dateEarliest'])){
 while ($row = $result->fetch_assoc()){
   echo" <div class = 'container mt-2 col-sm-12 col-lg-9 bg-light' tabindex='0'>";
 echo $row['date']."<br>";
-echo nl2br($row['message']);
+echo nl2br(htmlspecialchars($row['message'], ENT_COMPAT,'ISO-8859-1', true));
 
 //if user is logged in present 'Delete' and 'archive options'
 if(isset($_SESSION['id'])){
@@ -226,7 +227,7 @@ function getArchives($conn){
     while ($row = $result->fetch_assoc()){
       echo" <div class = 'container mt-2 col-lg-9 bg-light' tabindex='0'>";
     echo $row['date']."<br>";
-    echo nl2br($row['message']);
+    echo nl2br(htmlspecialchars($row['message'], ENT_COMPAT,'ISO-8859-1', true));
     //if user is logged in present 'Delete' option
     if(isset($_SESSION['id'])){
      echo "</p>
@@ -324,7 +325,7 @@ function archive($conn){
  */
 function replyComments($conn){
   //if the button named 'commentReply' is selected by the user
-  if(isset($_POST['commentReply'])){
+  if(isset($_POST['commentReply']) && Token::check($_POST['token'])){
   $reply = "Reply:";
   //Retrieve the 'cid', 'uid', 'date' and 'message' values of the comment
   $cid = $_POST['cid'];

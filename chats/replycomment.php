@@ -3,6 +3,10 @@ date_default_timezone_set('Europe/London');
 include '../functions/dbh.inc.php';
 include '../functions/chat.inc.php';
 include '../functions/login.inc.php';
+//server keeps the session data for 3 hours
+ini_set('session.gc_maxlifetime', 10800);
+session_start();
+require_once '../functions/Token.php';
  ?>
 
 <!DOCTYPE html>
@@ -63,6 +67,7 @@ echo "<form method='POST' action='".replyComments($conn)."'>
 </div>
 
 <textarea class = 'form-control mt-2 col-sm-12' placeholder='Type reply here'  name = 'message' rows= '3'> </textarea><br>
+  <input type = 'hidden' name = 'token' value = '".Token::generate()."'>
 <button type = 'submit' class='btn btn-primary btn-lg' name = 'commentReply' >Reply</button>
 </div>
 </div>
