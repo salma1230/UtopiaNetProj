@@ -24,7 +24,7 @@ session_start();
 
 
 <!-- Navigation -->
-<?php include('chats/header.php') ?>
+<?php include('pages/header.php') ?>
 
 
 <!--- Image Slider -->
@@ -39,12 +39,12 @@ session_start();
 	 <div class="carousel-caption">
 		 <h1 class="display-2">UtopiaNet</h1>
 		 <h3>Helping students help each other</h3>
-		 <button type="button" class="btn btn-outline-light btn-lg" onclick="location.href='chats/teacherLogin.php'">Teacher Login</button>
+		 <button type="button" class="btn btn-outline-light btn-lg" onclick="location.href='pages/teacherLogin.php'">Teacher Login</button>
      <?php
      if(isset($_SESSION['id'])){
-     echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='chats/chats.php'><a href='chats/chats.php'>Chat Page</button>";
+     echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='pages/chats.php'><a href='chats/chats.php'>Chat Page</button>";
      }else{
-      echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='chats/roomID.php'>Chat Page</button>";
+      echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='pages/roomID.php'>Chat Page</button>";
      }
      ?>
 
@@ -62,7 +62,7 @@ session_start();
 		under the teacher's supervision. If you are a teacher sign up today by clicking 'Register Now'.</p>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-      <a href="chats/registerTeacher.php" type="button" class="btn btn-outline-secondary btn-lg">Register Now</button></a>
+      <a href="pages/registerTeacher.php" type="button" class="btn btn-outline-secondary btn-lg">Register Now</button></a>
 
 		</div>
 	</div>
@@ -212,7 +212,7 @@ session_start();
 
 
 <!--- Footer -->
-<?php include('chats/footer.php'); ?>
+<?php include('pages/footer.php'); ?>
 
 
 
