@@ -6,6 +6,7 @@ include '../functions/login.inc.php';
 //server keeps the session data for 3 hours
 ini_set('session.gc_maxlifetime', 10800);
 session_start();
+require_once '../functions/Token.php';
  ?>
 
  <!DOCTYPE html>
@@ -91,7 +92,7 @@ session_start();
   					</div>
 
 
-
+            <input type = 'hidden' name = 'token' value = '".Token::generate()."'>
           	<div class='form-group'>
   						<input type='submit' value='Login' name='loginSubmit' class='btn float-right login_btn'>
   					</div>
