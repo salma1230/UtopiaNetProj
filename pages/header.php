@@ -27,16 +27,16 @@ echo "<nav class='navbar navbar-expand-md navbar-light bg-light fixed-top'>
 	 </li>";
 	  if(isset($_SESSION['id'])){
 	  echo "<li class='nav-item'>
-     <a class='nav-link' href='chats/chats.php'>Chat Page</a>
+     <a class='nav-link' href='pages/chats.php'>Chat Page</a>
    </li>";
 	  }else{
 			echo "<li class='nav-item'>
-	     <a class='nav-link' href='chats/roomID.php'>Chat Page</a>
+	     <a class='nav-link' href='pages/roomID.php'>Chat Page</a>
 	   </li>";
 	 }
    echo "
   <li class='nav-item'>
-   <a class='nav-link' href='chats/teacherLogin.php'>Teacher Login</a>
+   <a class='nav-link' href='pages/teacherLogin.php'>Teacher Login</a>
  </li>
    ";
 
