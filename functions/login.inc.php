@@ -27,32 +27,39 @@ if(isset($_POST['loginSubmit']) && Token::check($_POST['token'])){
         //Selects the row from the database with matching username
         $sql = "SELECT * FROM users WHERE username = '$username_sanitized'";
         $result = $conn->query($sql);
-      }
-     //If there is an existing user with that username in the 'users' table
-      if(mysqli_num_rows($result) > 0){
-          if($row = $result->fetch_assoc()){
-          //Verify the user's password matched that of the password stored in the 'user' table.
-          $pwd_hash = password_verify($pwd, $row['password']);
-          //Retrieve the roomID assigned to the user
-          $roomID = $row['roomID'];
-          //Store the roomID in a session
-          $_SESSION['roomID'] = $roomID;
-          //If the password is true
-          if($pwd_hash == true){
-          //create an ID session and redirect to the 'chats.php' page.
-          $_SESSION['id'] = $row['id'];
-          header("Location: chats.php?loginsuccess");
-        }
-        else{
-          echo "Incorrect Password. Please try again";
-        }
-          }
+
+
+             //If there is an existing user with that username in the 'users' table
+              if(mysqli_num_rows($result) > 0){
+                  if($row = $result->fetch_assoc()){
+                  //Verify the user's password matched that of the password stored in the 'user' table.
+                  $pwd_hash = password_verify($pwd, $row['password']);
+                  //Retrieve the roomID assigned to the user
+                  $roomID = $row['roomID'];
+                  //Store the roomID in a session
+                  $_SESSION['roomID'] = $roomID;
+                  //If the password is true
+                  if($pwd_hash == true){
+                  //create an ID session and redirect to the 'chats.php' page.
+                  $_SESSION['id'] = $row['id'];
+                  header("Location: chats.php?loginsuccess");
+                }
+                else{
+                  echo "Incorrect username/password. Please try again";
+                }
+              }
+            }
+                else{
+                  echo "Incorrect username/password. Please try again";
+                }
       }
       else{
-      echo "That username does not exist";
+        echo "Please enter username/password";
       }
-    }
-  }
+
+          }
+}
+
   else{
     return False;
   }
@@ -132,7 +139,7 @@ if(isset($_POST['regSubmit']) && Token::check($_POST['token'])){
       if(filter_var($email2, FILTER_VALIDATE_EMAIL)){
       $sql = "INSERT INTO users(username,email, password, roomID) VALUES('$username_sanitized', '$email', '$pwd_hash', '$roomID')";
       $result = $conn->query($sql);
-      header("Location: ../chats/teacherLogin.php");
+      header("Location: ../pages/teacherLogin.php");
     }
     else{
       echo "invalid email";
@@ -254,20 +261,21 @@ function sendEmail($conn){
 
 function resetpassword($conn){
   if(isset($_POST['newPasswordSubmit']) && Token::check($_POST['token'])){
-
+    $newPwd1 = $_POST['password1'];
+    $newPwd2 = $_POST['password2'];
     $email1  =  $_POST['email'];
     // Remove all illegal characters from email
     $email2 = filter_var($email1, FILTER_SANITIZE_EMAIL);
-    $newPwd = $_POST['password'];
-    $newPwd2 = $_POST['password2'];
 
-    if(($newPwd == $newPwd2) && !empty($newPwd) && filter_var($email2, FILTER_VALIDATE_EMAIL) ){
-    $pwd_hash = password_hash($newpwd, PASSWORD_DEFAULT);
+
+
+    if(($newPwd1 == $newPwd2) && !empty($newPwd1) && filter_var($email2, FILTER_VALIDATE_EMAIL) ){
+    $pwd_hash = password_hash($newPwd1, PASSWORD_DEFAULT);
     $sql = "UPDATE users SET password = '$pwd_hash' WHERE email = '$email1'";
     $result = $conn->query($sql);
     }
     else{
-      echo "empty password.";
+      echo "invalid password/email";
     }
 }
 }

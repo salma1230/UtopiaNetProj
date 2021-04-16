@@ -74,9 +74,9 @@ require_once '../functions/Token.php';
     </div>
             <div class='input-group form-group'>
 
-              <input type='text' name ='password' class='form-control' placeholder='New password'>
+              <input type='password' name ='password1' class='form-control' placeholder='New password'>
             </div>
-            <input type='text' name ='password2' class='form-control' placeholder='Re-enter new password'>
+            <input type='password' name ='password2' class='form-control' placeholder='Re-enter new password'>
           </div>
             <input type = 'hidden' name = 'token' value = '".Token::generate()."'>
           	<div class='form-group'>
