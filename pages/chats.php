@@ -28,6 +28,9 @@ require_once '../functions/Token.php';
     	 <li class="nav-item">
     		 <a class="nav-link" href="teacherLogin.php">Login</a>
     	 </li>
+       <li class="nav-item">
+    		 <a class="nav-link" href="quiz.php">Quiz</a>
+    	 </li>
       <li class="nav-item">
        <a class="nav-link" href="archive.php">Archives</a>
      </li>
