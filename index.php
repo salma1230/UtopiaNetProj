@@ -42,7 +42,7 @@ session_start();
 		 <button type="button" class="btn btn-outline-light btn-lg" onclick="location.href='pages/teacherLogin.php'">Teacher Login</button>
      <?php
      if(isset($_SESSION['id'])){
-     echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='pages/chats.php'><a href='chats/chats.php'>Chat Page</button>";
+     echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='pages/chats.php'><a href='pages/chats.php'>Chat Page</button>";
      }else{
       echo "<button type='button' class='btn btn-primary btn-lg'  onclick=location.href='pages/roomID.php'>Chat Page</button>";
      }
