@@ -55,7 +55,7 @@ echo"<form method= 'POST' action= '".userLogout()."'>
       <main>
 
     			<div class="container">
-      <?php      echo "<form method='POST' action='".getQuestion($conn)."'> </form>";?>
+      <?php echo "<form method='POST' action='".getQuestion($conn)."'> </form>";?>
 
 
     			</div>

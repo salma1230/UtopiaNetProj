@@ -120,6 +120,7 @@ if(isset($_POST['dateEarliest'])){
 while ($row = $result->fetch_assoc()){
   echo" <div class = 'container mt-2 col-sm-12 col-lg-9 bg-light' tabindex='0'>";
 echo $row['date']."<br>";
+echo "Votes: ".$row['votes']."<br>";
 echo nl2br(htmlspecialchars($row['message'], ENT_COMPAT,'ISO-8859-1', true));
 
 //if user is logged in present 'Delete' and 'archive options'
@@ -130,9 +131,10 @@ if(isset($_SESSION['id'])){
   <button type = 'submit' name = 'commentDelete'>Delete</button>
   </form>
   <form class='edit-form' method='POST' action='replycomment.php'>
-  <input type = 'hidden' name='cid' value = '".$row['cid']."'>
+  <input type = 'hidden' name='cid' value ='".$row['cid']."'>
   <input type = 'hidden' name='uid' value = '".$row['uid']."'>
   <input type = 'hidden' name='date' value = '".$row['date']."'>
+  <input type = 'hidden' name='votes' value = '".$row['votes']."'>
   <input type = 'hidden' name='message' value = '".$row['message']."'>
   <button>Reply</button>
   </form>
@@ -147,6 +149,7 @@ if(isset($_SESSION['id'])){
 else{
   echo"</p>
   <form class ='upvote-form' method= 'POST' action='".upvote($conn)."'>
+  <input type = 'hidden' name='votes' value = '".$row['votes']."'>
   <input type = 'hidden' name='cid' value = '".$row['cid']."'>
   <button type = 'submit' name = 'upvote'>Upvote</button>
   </form>
@@ -383,15 +386,23 @@ else{
  *
  * param: Connection to database '$conn'
  *
- * return:None
+ * return:None;
  */
 function upvote($conn){
 
   if(isset($_POST['upvote'])){
+    //retrieve the current roomID
+  $room = $_SESSION['roomID'];
+  $votes = $_POST['votes'];
+  $votes_new = $votes+ 1;
   $cid = $_POST['cid'];
-   $sql = "UPDATE chat SET votes = votes+1  WHERE cid='$cid' ";
+
+  $sql = "UPDATE chat SET votes = $votes_new  WHERE cid='$cid' ";
   $result = $conn->query($sql);
+  header("Location: chats.php?$room");
+  return True;
 }
+return False;
 }
 /**
  * Clears all posts in chat page.
