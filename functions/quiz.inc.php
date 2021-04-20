@@ -4,7 +4,7 @@ require_once 'Token.php';
 function addquestion($conn){
 	//retrieve the current roomID
 	$room = $_SESSION['roomID'];
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']) && Token::check($_POST['token'])){
 	$question_number = $_POST['question_number'];
 	$question_text = $_POST['question_text'];
 	$correct_choice = $_POST['correct_choice'];

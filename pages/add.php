@@ -92,6 +92,7 @@ echo"<form method= 'POST' action= '".userLogout()."'>
             <label>Correct Option Number</label>
             <input type='number' name='correct_choice'>
           </p>
+            <input type = 'hidden' name = 'token' value = '".Token::generate()."'>
           <input type='submit' name='submit' value ='submit'>
 
 
