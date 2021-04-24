@@ -58,6 +58,8 @@
         "phpmyadmin/twig-i18n-extension": "^2.0 || ^3.0",
         "phpseclib/phpseclib": "^2.0",
         "phpunit/phpunit": "9.5.2",
+        "phpunit/phpunit-selenium": "^9.0",
+        "rmccue/requests": "^1.7",
         "symfony/config": "^4.2.8",
         "symfony/dependency-injection": "^4.2.8",
         "symfony/expression-language": "^4.2",
@@ -119,4 +121,5 @@
     "config":{
         "sort-packages": true
     }
+
 }

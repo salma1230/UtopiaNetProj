@@ -86,8 +86,7 @@ require_once '../functions/Token.php';
   					</div>
 
           	<div class='row align-items-center remember'>
-  						<input type='checkbox'>Remember Me &nbsp;&nbsp;
-                <a class = 'register' href = 'registerTeacher.php'>Not Registered</a>
+              &nbsp;&nbsp;&nbsp;  <a class = 'register' href = 'registerTeacher.php'>Not Registered</a>
                 &nbsp;&nbsp; <a class = 'register' href = 'ForgottenPassword.php'>Forgotten Password</a>
   					</div>
 

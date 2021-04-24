@@ -23,6 +23,9 @@ session_start();
        <li class="nav-item">
          <a class="nav-link" href="teacherLogin.php">Login</a>
        </li>
+       <li class="nav-item">
+    		 <a class="nav-link" href="quiz.php">Quiz</a>
+    	 </li>
      	 <li class="nav-item">
      		 <a class="nav-link" href="chats.php">Chat Page</a>
      	 </li>
