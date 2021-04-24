@@ -1,6 +1,13 @@
 <?php
 require_once 'Token.php';
 
+/**
+ * Adds a question to the quiz
+ *
+ * param: connection to database ''$conn'
+ *
+ * return: None.
+ */
 function addquestion($conn){
 	//retrieve the current roomID
 	$room = $_SESSION['roomID'];
@@ -71,6 +78,14 @@ if(isset($_POST['submit']) && Token::check($_POST['token'])){
 
 }
 
+
+/**
+ * Retrieves questions from the quiz
+ *
+ * param: connection to database ''$conn'
+ *
+ * return: None.
+ */
 function getQuestion($conn){
 	//retrieve the current roomID
 	$room = $_SESSION['roomID'];
@@ -109,6 +124,13 @@ echo "</ul>
 
 }
 
+/**
+ * Calculates the quiz score
+ *
+ * param: connection to database ''$conn'
+ *
+ * return: None.
+ */
 function process($conn){
 	//For first question, score will not be there.
 if(!isset($_SESSION['score'])){
@@ -121,13 +143,13 @@ if($_POST){
 $query = "SELECT * FROM questions WHERE roomID = '$room'";
 $total_questions = mysqli_num_rows(mysqli_query($conn,$query));
 
-//We need to capture the question number from where form was submitted
+//capture the question number from where form was submitted
 $number = $_POST['number'];
 
-//Here we are storing the selected option by user
+//Store the selected option by user
 $selected_choice = $_POST['choice'];
 
-//What will be the next question number
+//the next question number
 $next = $number+1;
 
 //Determine the correct choice for current question
@@ -137,7 +159,7 @@ $query = "SELECT * FROM answers WHERE question_number = $number AND is_correct =
 
  $correct_choice = $row['id'];
 
-//Increase the score if selected cohice is correct
+//Increase the score if selected choice is correct
  if($selected_choice == $correct_choice){
 	$_SESSION['score']++;
  }

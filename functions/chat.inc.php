@@ -1,5 +1,7 @@
 <?php
 require_once 'Token.php';
+
+
 /**
  * Generates a  new comment and inserts it as a new row into 'chat' database when user submits a question/post, called in 'chats.php'.
  *

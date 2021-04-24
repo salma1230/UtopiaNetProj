@@ -258,7 +258,13 @@ function sendEmail($conn){
 
     }
 }
-
+/**
+ * Resets user's password
+ *
+ * param: connection to database ''$conn'
+ *
+ * return: None.
+ */
 function resetpassword($conn){
   if(isset($_POST['newPasswordSubmit']) && Token::check($_POST['token'])){
     $newPwd1 = $_POST['password1'];
@@ -268,9 +274,11 @@ function resetpassword($conn){
     $email2 = filter_var($email1, FILTER_SANITIZE_EMAIL);
 
 
-
+    //if passwords are equal and not empty
     if(($newPwd1 == $newPwd2) && !empty($newPwd1) && filter_var($email2, FILTER_VALIDATE_EMAIL) ){
     $pwd_hash = password_hash($newPwd1, PASSWORD_DEFAULT);
+
+    //update password in database
     $sql = "UPDATE users SET password = '$pwd_hash' WHERE email = '$email1'";
     $result = $conn->query($sql);
     }
