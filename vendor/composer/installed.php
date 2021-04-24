@@ -355,6 +355,15 @@
       ),
       'reference' => 'f661659747f2f87f9e72095bb207bceb0f151cb4',
     ),
+    'phpunit/phpunit-selenium' => 
+    array (
+      'pretty_version' => '9.0.0',
+      'version' => '9.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '41711edd4dfcc5a0db2f8a22da6d2ddc908da741',
+    ),
     'pragmarx/google2fa' => 
     array (
       'pretty_version' => 'v6.0.1',
@@ -434,6 +443,15 @@
       array (
         0 => '1.0',
       ),
+    ),
+    'rmccue/requests' => 
+    array (
+      'pretty_version' => 'v1.7.0',
+      'version' => '1.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '87932f52ffad70504d93f04f15690cf16a089546',
     ),
     'samyoul/u2f-php-server' => 
     array (

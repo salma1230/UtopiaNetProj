@@ -72,7 +72,7 @@ echo "<form method='POST' action='".setComments($conn)."'>
 if(isset($_SESSION['id'])){
 echo "<form method='POST' action='".clearChat($conn)."'>
 <div class='form-group'>
-<button type = 'submit' class='btn btn-primary btn-lg' name = 'clearComments' >CLEAR ALL</button>
+<button type = 'submit' class='btn btn-primary btn-lg' name = 'clearComments' >Clear All</button>
     </div>
 </form>";
 }
@@ -81,8 +81,8 @@ echo "<form method='POST' action='".clearChat($conn)."'>
 echo "<form method='POST' action='".getChatComments($conn)."'>
   <div class='dropdown-menu' aria-labelledby='dropdownMenu2'>
     <button class='dropdown-item' type='submit' name='vote'>Votes: High to Low</button>
-    <button class='dropdown-item' type='submit' name ='dateEarliest'>Date: Earliest to Latest</button>
-    <button class='dropdown-item' type='submit' name='dateLatest'>Date: Latest to Earliest</button>
+    <button class='dropdown-item' type='submit' name ='dateEarliest'>Date: Latest to Earliest</button>
+    <button class='dropdown-item' type='submit' name='dateLatest'>Date: Earliest to Latest</button>
   </div>
 </div>
 </form>";

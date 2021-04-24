@@ -86,17 +86,14 @@ session_start();
 <div class="container-fluid padding">
 	<div class="row text-center padding">
 		<div class="col-xs-12 col-sm-6 col-md-4">
-      <i class="fas fa-code"></i>
 			<h3>Student</h3>
 			<p>Enter the chat page with your teacher's room ID code.</p>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4">
-			<i class="fas fa-bold"></i>
 			<h3>Teacher</h3>
 			<p>Register to set up a room for your students</p>
 		</div>
 		<div class="col-sm-12 col-md-4">
-			<i class="fab fa-css3"></i>
 			<h3>Institution</h3>
 			<p>Get in contact with us to discuss a more personalised system for your institution.</p>
 		</div>
@@ -110,13 +107,17 @@ session_start();
 	<div class="row padding">
 		<div class="col-lg-6">
      <h2>Terms and Conditions</h2>
-     <br><br>
-          <p>1)place term and conditions in this space.
-					</p>
-						<p>2)place term and conditions in this space.
-						</p>
-							<p>3)place term and conditions in this space.
-							</p>
+          <p>By registering and using UtopiaNet's services you are agreeing to use this system
+            for the purpose intended as follows:</p> <br>
+            <h3>Accounts and Membership</h3>
+            <p>If you create an account on the Website, you are responsible for maintaining the security of your account and you are fully responsible
+              for all activities that occur under the account and any other actions taken in connection with it.
+              We may, but have no obligation to, monitor and review new accounts before you may sign in and start using the Services.
+              Providing false contact information of any kind may result in the termination of your account.
+               You must immediately notify us of any unauthorized uses of your account or any other breaches of security
+               . We will not be liable for any acts or omissions by you, including any damages of any kind incurred as a result of such acts or omissions. We may suspend, disable, or delete your account (or any part thereof) if we determine that you have violated any provision of this Agreement or that your conduct or content would tend to damage our reputation and goodwill. If we delete your account for the foregoing reasons, you may not re-register for our Services. We may block your email address and Internet protocol address to prevent further registration.</p>
+               <p> More information on our Terms and Conditions can be found here: </P>
+            <a href =" https://www.websitepolicies.com/policies/view/r6StI5yM">https://www.websitepolicies.com/policies/view/r6StI5yM</a>
             <br>
 
 		</div>
@@ -129,87 +130,38 @@ session_start();
 
 
 <hr class="my-4">
-<!--- Meet the team -->
-<div class="container-fluidf padding" id="About">
-	<div class="row welcome text-center">
-		<div class="col-12">
-			<h2 class="display-4">Behind UtopiaNet</h2>
-		</div>
-		<br>
-	</div>
-</div>
-
-
-<!--- Cards -->
-<div class="container-fluid padding">
-	<div class="row padding">
-
-	<div class="col-md-6">
-		<div class="card">
-		<img class="card-img-top" src="img/team2.png">
-		<div class="card-body">
-			<h4 class="card-title">Salma Mahmood</h4>
-				<p>Salma is a final year Computer Science student at Aston University</p>
-				<a href="#" class="btn btn-outline-secondary">See profile</a>
-		</div>
-
-
-</div>
-</div>
-<div class="col-md-6">
-  <div class="card">
-  <img class="card-img-top" src="img/team3.png">
-  <div class="card-body">
-    <h4 class="card-title">Inspiration behind UtopiaNet</h4>
-      <p>Learn more about how the global pandemic inspired UtopiaNet</p>
-      <a href="#" class="btn btn-outline-secondary">See more</a>
-  </div>
-</div>
-</div>
-
-</div>
-</div>
-
-
 
 <!--- Two Column Section -->
 <div class="container-fluid padding" id="Philosophy">
 	<div class="row padding">
 		<div class="col-lg-6">
-     <h2>Our Philosophy...</h2>
+     <h2>Our Philosophy</h2>
           <p>The purpose of UtopiaNet is to connect students and teachers in a time where distant
           learning is becoming increasingly more common.</p>
 						<p>We believe it is important to ensure the level of eductation that students are recieving
               are of the highest quality.<p>
                 <p>With distant learning on the rise we understand the social presence factor
                   is missing among students. We aim to fill that gap by providing students a safe
-                  space where they are able to help each other whilst removing the fear of
-                  being judged by peers.<p>
+                  space where they are able to ask for help and help others anonymously, thus
+                  removing the fear of being judged by peers.<p>
+                    <p>UtopiaNet's chat page allows students to submit, upvote and reply to each other's posts, the reasons
+                      for promoting students to communicate with each other is because here at UtopiaNet we believe sometimes students are able to explain certain things
+                       in a way that is more understanding for some students.
+                       Thus allowing students to help each other clear their doubts and in the process
+                       a teacher’s workload as well.
+                    <p>UtopiaNet's quiz feature allows teachers to set multiple choice quizzes for students, to allow students to test their own knowledge.
+                      Students are able to take these quizzes anonymously and receive their score at the end of the quiz.
+                      The reason for including a quiz feature along with the chat page is to promote more discussion amongst students about which questions they found difficult, to which
+                   teachers can also take a note of, allowing teachers to gain a better understanding of the overall students' engagement with class material.
+</p>
             <br>
 		</div>
 		<div class="col-lg-6">
-			<img src="img/bootstrap2.png" class="img-fluid">
+			<img src="img/team3.png" class="img-fluid">
 		</div>
 	</div>
 	<hr class="my-4">
 </div>
-<!--- Connect -->
-<div class="container-fluid padding">
-	<div class="row text-center padding">
-		<div class="col-12">
-			<h2>Connect</h2>
-		</div>
-		<!---need to fill in the hashtags with links later -->
-		<div class="col-12 social padding">
-			<a href="#"><i class="fab fa-facebook"></i></a>
-					<a href="#"><i class="fab fa-twitter"></i></a>
-							<a href="#"><i class="fab fa-google-plus-g"></i></a>
-									<a href="#"><i class="fab fa-instagram"></i></a>
-											<a href="#"><i class="fab fa-youtube"></i></a>
-											</div>
-										</div>
-									</div>
-
 
 <!--- Footer -->
 <?php include('pages/footer.php'); ?>

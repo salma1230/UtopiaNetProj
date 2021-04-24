@@ -40,7 +40,7 @@ function setComments($conn){
    VALUES ('$uid', '$date', '$message_with_title', '$votes', '$room')";
 
     $result = $conn->query($sql);
-    header("Location: ../chats/chats.php?$room");
+    header("Location: ../pages/chats.php?$room");
     return True;
 
  }
@@ -53,7 +53,7 @@ function setComments($conn){
     VALUES ('$uid', '$date', '$message_with_title', '$votes', '$room')";
 
      $result = $conn->query($sql);
-     header("Location: ../chats/chats.php?$room");
+     header("Location: ../pages/chats.php?$room");
      return True;
 
   }
@@ -343,12 +343,12 @@ function replyComments($conn){
   //If teacher is logged in, alter message in post.
  if(empty($message_replace)){
    $errormsg = "Error:NoTextEntered";
-   header("Location: ../chats/chats.php?$room?$errormsg");
+   header("Location: ../pages/chats.php?$room?$errormsg");
    return False;
  }
  else if(strlen($message_replace)>245){
   $errormsg = "Error:TooManyCharacters";
-  header("Location: ../chats/chats.php?$room?$errormsg");
+  header("Location: ../pages/chats.php?$room?$errormsg");
   return False;
  }
   else if(isset($_SESSION['id'])){
@@ -359,7 +359,7 @@ function replyComments($conn){
         $sql = "UPDATE chat SET message=CONCAT(message, '$message1') WHERE cid ='$cid'";
 
         $result = $conn->query($sql);
-        header("Location: chats.php?$room");
+        header("Location: ../pages/chats.php?$room");
          return True;
 
       }

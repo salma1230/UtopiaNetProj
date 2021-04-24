@@ -386,6 +386,16 @@ class ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'R' => 
+        array (
+            'Requests' => 
+            array (
+                0 => __DIR__ . '/..' . '/rmccue/requests/library',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -393,6 +403,61 @@ class ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'PDF417' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/pdf417.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Command' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Command.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\CommandsHolder' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/CommandsHolder.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Driver' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Driver.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Element' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Element.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\Attribute' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/Attribute.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\Click' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/Click.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\Css' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/Css.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\Equals' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/Equals.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\GenericAccessor' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/GenericAccessor.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\GenericPost' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/GenericPost.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\Rect' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/Rect.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCommand\\Value' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCommand/Value.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ElementCriteria' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ElementCriteria.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Element\\Accessor' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Element/Accessor.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Element\\Select' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Element/Select.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Exception.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Keys' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Keys.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\KeysHolder' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/KeysHolder.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\NoSeleniumException' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/NoSeleniumException.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Response' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Response.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\ScreenshotListener' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/ScreenshotListener.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Session' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Session.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\AcceptAlert' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/AcceptAlert.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Active' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Active.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\AlertText' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/AlertText.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Click' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Click.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\DismissAlert' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/DismissAlert.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\File' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/File.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Frame' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Frame.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\GenericAccessor' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/GenericAccessor.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\GenericAttribute' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/GenericAttribute.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Keys' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Keys.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Location' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Location.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Log' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Log.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\MoveTo' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/MoveTo.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Orientation' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Orientation.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Url' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Url.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionCommand\\Window' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionCommand/Window.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionStrategy' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionStrategy.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionStrategy\\Isolated' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionStrategy/Isolated.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\SessionStrategy\\Shared' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/SessionStrategy/Shared.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Session\\Cookie' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Session/Cookie.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Session\\Cookie\\Builder' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Session/Cookie/Builder.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Session\\Storage' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Session/Storage.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Session\\Timeouts' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Session/Timeouts.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\StateCommand' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/StateCommand.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\URL' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/URL.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\WaitUntil' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/WaitUntil.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\WebDriverException' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/WebDriverException.php',
+        'PHPUnit\\Extensions\\Selenium2TestCase\\Window' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/Selenium2TestCase/Window.php',
+        'PHPUnit\\Extensions\\SeleniumBrowserSuite' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/SeleniumBrowserSuite.php',
+        'PHPUnit\\Extensions\\SeleniumCommon\\ExitHandler' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/SeleniumCommon/ExitHandler.php',
+        'PHPUnit\\Extensions\\SeleniumCommon\\RemoteCoverage' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/SeleniumCommon/RemoteCoverage.php',
+        'PHPUnit\\Extensions\\SeleniumTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit-selenium/PHPUnit/Extensions/SeleniumTestSuite.php',
         'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/AssertionFailedError.php',
@@ -1028,6 +1093,7 @@ class ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
+        'Token' => __DIR__ . '/../..' . '/functions/Token.php',
         'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
@@ -1037,6 +1103,7 @@ class ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit4ce2885baa0e6d262543dcac6b1cf7de::$classMap;
 
         }, null, ClassLoader::class);
